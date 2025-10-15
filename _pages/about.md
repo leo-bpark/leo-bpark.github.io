@@ -20,15 +20,12 @@ _styles: >
 <div class="profile-container">
     <img src="/assets/img/bumjini.png" width="40%" height="auto" class="styled-image"/>
     <div class="intro-text">
-        I study the mind of AI through rigorous analysis of neural representations, the computational "brain" of artificial intelligence. My broader goal is to uncover the General Principles of Mind that underlie both human and artificial cognition. By building this unified understanding, my research seeks to advance AI, deepen our grasp of the human mind, and open new horizons for human knowledge and intellectual growth.
+        <p><strong>Bumjin Park (call me Leo)</strong> studies the mind of AI through rigorous analysis of neural representations — the computational <strong>"brain" of artificial intelligence</strong>. His broader goal is to uncover the <strong>General Principles of Mind</strong> that underlie both human and artificial cognition. By building this unified understanding, his research seeks to <strong>advance AI</strong>, <strong>deepen our grasp of the human mind</strong>, and <strong>open new horizons for human knowledge and intellectual growth</strong>.</p>
     </div>
 </div>
 
 
 <style>
-body, p, h1, h2, h3, h4, h5, h6, li, div, span, strong {
-    font-family: "Times New Roman", Times, serif !important;
-}
 
 .profile-container {
     display: flex;

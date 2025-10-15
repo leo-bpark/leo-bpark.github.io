@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <!-- Head -->
+  <head>    <!-- Metadata, OpenGraph and Schema.org -->
+    
+
+    <!-- Standard metadata -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>B. Park | Deontological Keyword Bias of LLMs</title>
+    <meta name="author" content="B. Park  " />
+    <meta name="description" content="Deontological Keyword Bias: The Impact of Modal Expressions on Normative Judgments of Language Models" />
+    <meta name="keywords" content="jekyll, jekyll-theme, academic-website, portfolio-website" />
+
+
+    <!-- Bootstrap & MDB -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha256-DF7Zhf293AJxJNTmh5zhoYYIMs2oXitRfBjY+9L//AY=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mdbootstrap@4.20.0/css/mdb.min.css" integrity="sha256-jpjYvU3G3N6nrrBwXJoVEYI/0zw8htfFnhT9ljN3JJw=" crossorigin="anonymous" />
+
+    <!-- Fonts & Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/academicons@1.9.1/css/academicons.min.css" integrity="sha256-i1+4qU2G2860dGGIOJscdC30s9beBXjFfzjWLjBRsBg=" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:100,300,400,500,700|Material+Icons">
+
+    <!-- Code Syntax Highlighting -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jwarby/jekyll-pygments-themes@master/github.css" media="none" id="highlight_theme_light" />
+
+    <!-- Styles -->
+    
+    <link rel="shortcut icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>👐🏼</text></svg>">
+    
+    <link rel="stylesheet" href="/assets/css/main.css">
+    <link rel="canonical" href="http://localhost:4000/research/2025_acl_deontology/">
+    
+    <!-- Dark Mode -->
+    
+
+    <!-- Social Badges Header Styles -->
+    <style>
+    .social-badges-header {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        height: 100%;
+        line-height: normal;
+    }
+    
+    .nav-item .social-badges-header {
+        display: flex;
+        align-items: center;
+        height: 100%;
+    }
+    
+    .nav-item.social-nav-item {
+        margin-right: auto;
+        order: -1;
+    }
+    
+    .social-badges-header a {
+        text-decoration: none;
+        transition: transform 0.2s ease;
+    }
+    
+    .social-badges-header a:hover {
+        transform: translateY(-1px);
+    }
+    
+    @media (max-width: 768px) {
+        .social-badges-header {
+            gap: 3px;
+        }
+        
+        .social-badges-header img {
+            height: 20px !important;
+        }
+    }
+    </style>
+
+  </head>
+
+  <!-- Body -->
+  <body class=" sticky-bottom-footer">
+
+    <body>
+<!-- Header --><header>
+      
+      <!-- Nav Bar -->
+      <nav id="navbar" class="navbar navbar-light navbar-expand-sm sticky-top">
+        <div class="container" style="padding-left: 0px; padding-bottom: 0px; margin-bottom: 0px;">
+          <img>
+          <!-- <img src="/assets/common/KAIST-hi.gif" width="40px" style="margin-right:0px; padding-bottom: 3px;"> -->
+          
+          <a class="navbar-brand title font-weight-lighter" href="http://localhost:4000/" style="margin-left:20px; padding-bottom: 0px;">
+              <!--B. Park-->
+           <span class="font-weight-bold" style="font-size:larger;font-family:Times New Roman;">B. Park    </span>
+        </a>
+          <!-- Navbar Toggle -->
+          <button class="navbar-toggler collapsed ml-auto" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar top-bar"></span>
+            <span class="icon-bar middle-bar"></span>
+            <span class="icon-bar bottom-bar"></span>
+          </button>
+          
+            <div class="social-badges-header">
+              <a href="https://scholar.google.com/citations?user=XzIXaxoAAAAJ&amp;hl=ko" target="_blank" rel="noopener noreferrer">
+                <img src="https://img.shields.io/badge/-000000?style=flat&amp;logo=google-scholar&amp;logoColor=white" alt="Scholar" style="height: 25px; margin-right: 5px;">
+              </a>
+              <a href="https://x.com/Bumjini" target="_blank" rel="noopener noreferrer">
+                <img src="https://img.shields.io/badge/-000000?style=flat&amp;logo=x&amp;logoColor=white" alt="X" style="height: 25px; margin-right: 5px;">
+              </a>
+              <a href="https://www.linkedin.com/in/bumjin-park-aa093116b/" target="_blank" rel="noopener noreferrer">
+                <img src="https://img.shields.io/badge/LinkedIn-000000?style=flat&amp;logo=linkedin&amp;logoColor=white" alt="LinkedIn" style="height: 25px;">
+              </a>
+              <a href="https://www.instagram.com/bumjini/" target="_blank" rel="noopener noreferrer">
+                <img src="https://img.shields.io/badge/-000000?style=flat&amp;logo=instagram&amp;logoColor=white" alt="Instagram" style="height: 25px; margin-right: 5px;">
+              </a>
+            </div>
+
+          <div class="collapse navbar-collapse text-right" id="navbarNav" style="padding-bottom: 0px; margin-bottom: 0px;">
+            <ul class="navbar-nav ml-auto flex-nowrap" style="padding-bottom: 0px; margin-bottom: 0px;">
+
+              <!-- About -->
+              <!-- <li style="font-size: 17px" class="nav-item ">
+                <a class="nav-link" href="/">  About Me</a>
+              </li> -->
+              
+              <!-- Blog -->
+
+              
+
+
+              <!-- <li style="font-size: 17px; padding-bottom: 0px; margin-bottom: 0px;" class="nav-item "> -->
+                <a class="nav-link" href="/research/" style="padding-bottom: 0px; padding-top: 0px; margin-bottom: 0px; font-family:Times New Roman;">  
+                  <img src="/assets/img/logos/campus_icon.png" width="37px" style="margin-right:5px; vertical-align: center;"></a>
+              <!-- </li> -->
+
+              <!-- <li style="font-size: 17px; padding-bottom: 0px; margin-bottom: 0px;" class="nav-item "> -->
+                <a class="nav-link" href="/essay/" style="padding-bottom: 0px; padding-top: 0px; margin-bottom: 0px; font-family:Times New Roman;"> 
+                  <img src="/assets/img/logos/pen_icon.png" width="23px" style="margin-right:5px; vertical-align: center;"></a>
+              <!-- </li> -->
+
+              <!-- <li style="font-size: 17px; padding-bottom: 0px; margin-bottom: 0px;" class="nav-item "> -->
+                <a class="nav-link" href="/box/" style="padding-bottom: 0px; padding-top: 0px; margin-bottom: 0px; font-family:Times New Roman;"> 
+                  <img src="/assets/img/logos/box_icon.png" width="35px" style="margin-right:5px; vertical-align: center;"></a>
+              <!-- </li> -->
+
+              <!-- <li style="font-size: 17px; padding-bottom: 0px; margin-bottom: 0px;" class="nav-item ">
+                <a class="nav-link" href="/materials/" style="padding-bottom: 0px; margin-bottom: 0px;"> Materials</a>
+              </li> -->
+
+              <!-- Other pages -->
+              
+              <!-- Social Media Badges -->
+ 
+              <!-- Search Icon -->
+              <!-- <li style="font-size: 20px; padding-bottom: 0px; margin-bottom: 0px;" class="nav-item"> -->
+                <a class="nav-link" href="/search/" style="padding-bottom: 0px; padding-top: 0px; margin-bottom: 0px;">
+                  <img src="/assets/img/logos/search_icon.png" width="30px" style="margin-right:5px; margin-bottom: 0px; vertical-align: bottom;">
+                  <!-- <i class="fas fa-search"></i> -->
+                </a>
+              <!-- </li> -->
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <!-- Content -->
+    <div class="container mt-5">
+      <style>
+/* Base reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.6;
+  background-color: #ffffff;
+  color: #222;
+  padding: 2rem;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* Header */
+header {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+header h1 {
+  font-size: 2.8rem;
+  color: #990000;
+  margin-bottom: 0.5rem;
+}
+
+header h2 {
+  font-size: 1.4rem;
+  font-weight: normal;
+  color: #333;
+  margin-bottom: 1rem;
+}
+
+h4 {
+  font-size: 1.25rem;
+  font-weight: 600; /* 강조된 소제목 */
+  margin-top: 1.8rem;
+  margin-bottom: 0.8rem;
+  color: #222;
+}
+
+header p {
+  font-size: 1rem;
+  color: #555;
+}
+
+/* Section Titles */
+section h3 {
+  font-size: 1.6rem;
+  color: #222;
+  border-bottom: 2px solid #ddd;
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+  padding-bottom: 0.4rem;
+}
+
+/* Paragraphs & Lists */
+p {
+  margin-bottom: 1rem;
+}
+
+ul {
+  margin-left: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+li {
+  margin-bottom: 0.4rem;
+}
+
+/* Images */
+img {
+  max-width: 100%;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  border-radius: 4px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+/* Preformatted citation */
+pre {
+  background: #f4f4f4;
+  padding: 1rem;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 0.95rem;
+  overflow-x: auto;
+}
+
+/* Links */
+a {
+  color: #990000;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Footer */
+footer {
+  margin-top: 4rem;
+  padding-top: 2rem;
+  border-top: 1px solid #eee;
+  text-align: center;
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.caption {
+  font-size: 0.9rem;
+  color: #555;
+  margin-top: -0.5rem;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.styled-logo-container {
+  text-align: center;
+  margin: 0rem 0;
+}
+
+.styled-logo {
+  width: 33%;
+  border-radius: 15px;
+  display: inline-block;
+}
+
+#contact a {
+  color: #990000;
+  text-decoration: underline;
+}
+</style>
+
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Deontological Keyword Bias (ACL 2025)</title>
+  <link rel="stylesheet" href="style.css">
+
+
+
+  <!-- Header -->
+  <header>
+    <h1>Deontological Keyword Bias</h1>
+    <h2>The Impact of Modal Expressions on Normative Judgments of Language Models</h2>
+    <p><strong>ACL 2025 Main Conference</strong></p>
+    <p>
+      <a href="https://leo-bpark.github.io" target="_blank" rel="noopener noreferrer">Bumjin Park</a>, 
+      Jinsil Lee, 
+      Jaesik Choi<br>
+      KAIST AI, INEEJI<br>
+      <a href="mailto:bumjin@kaist.ac.kr">bumjin@kaist.ac.kr</a>
+    </p>
+  </header>
+
+<div class="styled-logo-container">
+  <img src="/assets/img/logos/acl2025.png" class="styled-logo">
+</div>
+
+
+  <!-- Paper & Code -->
+  <section id="resources">
+    <h3>Resources</h3>
+    <ul>
+      <li>
+<a href="" target="_blank">📄 Paper (ACL Anthology, TBD)</a> / <a href="https://arxiv.org/abs/2506.11068" target="_blank" rel="noopener noreferrer">📄 Arxiv </a> / <a href="https://openreview.net/forum?id=YSguiCzp8G&amp;noteId=YSguiCzp8G" target="_blank" rel="noopener noreferrer">📄 OpenReview</a>
+</li>
+      <li><a href="https://github.com/fxnnxc/deontological-keyword-bias" target="_blank" rel="noopener noreferrer">💻 Code &amp; Datasets</a></li>
+    </ul>
+  </section>
+
+  <!-- Key Concepts -->
+  <section id="concepts">
+    <h3>Key Concepts</h3>
+    <ul>
+      <li>
+<strong>DKE</strong>: Deontological Keyword Effect</li>
+      <li>
+<strong>DKB</strong>: Deontological Keyword Bias</li>
+      <li>
+<strong>Alignment</strong>: Human-model judgment agreement</li>
+    </ul>
+  </section>
+
+<section id="tldr">
+  <h3>TL;DR</h3>
+  <p>
+    Large language models (LLMs) show a <strong><u>systematic bias</u></strong> toward interpreting sentences as obligations 
+    when <strong><u>modal expressions</u></strong> like <em>must</em> or <em>should</em> are present—even when humans do not. 
+    We identify this as <strong>Deontological Keyword Bias (DKB)</strong> and propose a <strong><u>reasoning-based few-shot method</u></strong> 
+    to effectively reduce it.
+  </p>
+</section>
+
+
+<section id="task">
+  <h3>Research Task</h3>
+
+  <h4>1. Philosophical Foundations of Deontic Logic</h4>
+  <p>
+    The task is rooted in long-standing philosophical discussions of moral obligation. 
+    Drawing from <strong>Immanuel Kant's</strong> (1785) concept of moral duty and <strong>von Wright's</strong> (1951) formalization of deontic logic, 
+    our study examines how well LLMs understand and replicate deontic reasoning. 
+    We extend this analysis into the computational domain, testing how context and language shape model behavior.
+  </p>
+  <img src="https://d2acbkrrljl37x.cloudfront.net/research/publication/acl2025_task1.jpeg" width="90%" height="auto" class="styled-image">
+  <p class="caption">
+    <strong>Figure:</strong> From Kant's moral imperative to modern deontic logic, obligation is both a philosophical and computational question.
+  </p>
+
+  <h4>2. Verifying Normative Judgments in LLMs</h4>
+  <p>
+    This study investigates whether large language models (LLMs) can accurately assess whether a sentence expresses an <strong>obligation</strong>. 
+    The presence of <em>modal expressions</em> — such as <strong>must, ought to, should</strong> — can alter the perceived normative meaning of a sentence.
+    To test this, we compare human and model judgments across both <em>deontological</em> and <em>commonsense</em> scenarios.
+  </p>
+  <img src="https://d2acbkrrljl37x.cloudfront.net/research/publication/acl2025_task2.jpeg" width="90%" height="auto" class="styled-image">
+
+  <p class="caption">
+    <strong>Figure:</strong> Humans and LLMs are asked whether a sentence expresses obligation, with or without modal expressions.
+  </p>
+</section>
+
+
+
+
+<section id="analysis">
+  <h3>Analysis Highlights</h3>
+
+  <h4>1. Human vs. LLM Judgment Patterns</h4>
+  <p>
+    While both humans and LLMs increase obligation judgments when modal expressions are included, 
+    LLMs exhibit significantly <strong>lower variance and higher consistency</strong>. This indicates that 
+    models are more rigidly influenced by modal keywords such as <em>must</em> or <em>ought to</em>, 
+    often ignoring contextual nuance. In contrast, human judgments reflect greater sensitivity to context and ambiguity.
+  </p>
+
+<img src="https://d2acbkrrljl37x.cloudfront.net/research/publication/acl2025_exp1.jpeg" width="90%" height="auto" class="styled-image">
+
+  <h4>2. Bias Across Language Models</h4>
+  <p>
+    The effect of modal expressions is consistent across model families — including GPT-4o, LLaMA3, and Gemma2 — 
+    but the <strong>magnitude of Deontological Keyword Bias (DKB)</strong> varies. Notably, open-source models such as 
+    LLaMA3-8B showed stronger overgeneralization of obligation than GPT-4o. Even in <em>negated forms</em> 
+    (e.g., "must not"), models often misinterpret the statement as containing obligation.
+  </p>
+
+<img src="https://d2acbkrrljl37x.cloudfront.net/research/publication/acl2025_exp2.jpeg" width="90%" height="auto" class="styled-image">
+
+  <h4>3. Impact of Question Framing</h4>
+  <p>
+    We tested three question levels — <em>General</em>, <em>Explicit</em>, and <em>Strict</em>. 
+    DKB was observed across all levels, but more prominently under general prompts. 
+    Some models correctly lowered obligation judgments under stricter questions, 
+    suggesting partial semantic understanding. However, others remained biased even with stricter constraints, 
+    showing overreliance on modal triggers.
+  </p>
+
+  <img src="https://d2acbkrrljl37x.cloudfront.net/research/publication/acl2025_exp3.jpeg" width="90%" height="auto" class="styled-image">
+
+
+  <h4>4. Debiasing through In-Context Reasoning</h4>
+  <p>
+    To mitigate DKB, we apply <strong>few-shot examples</strong> with and without modal expressions, 
+    along with <strong>reasoning-based prompts</strong>. While few-shot examples help, the inclusion of 
+    reasoning consistently reduces obligation judgments in non-deontic contexts. 
+    This demonstrates that <em>explicit moral reasoning</em> enables models to override lexical bias.
+  </p>
+<img src="https://d2acbkrrljl37x.cloudfront.net/research/publication/acl2025_exp4.jpeg" width="90%" height="auto" class="styled-image">
+
+
+</section>
+
+  <!-- Citation -->
+  <section id="citation">
+    <h3>Citation</h3>
+    <pre>
+@inproceedings{park2025dkb,
+  title={Deontological Keyword Bias: The Impact of Modal Expressions on Normative Judgments of Language Models},
+  author={Park, Bumjin and Lee, Jinsil and Choi, Jaesik},
+  booktitle={Proceedings of the 63rd Annual Meeting of the Association for Computational Linguistics (ACL)},
+  year={2025}
+}
+    </pre>
+  </section>
+
+<section id="contact">
+  <h3>Contact</h3>
+  <p>If you have questions or would like to discuss this research, feel free to reach out:</p>
+  <p><strong>Email:</strong> <a href="mailto:bumjin@kaist.ac.kr">bumjin@kaist.ac.kr</a></p>
+</section>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2025 Bumjin Park · KAIST AI · ACL 2025</p>
+  </footer>
+
+  
+
+</div>
+</body></body>
+
+
+    </div>
+
+    <!-- Footer -->
+    <!--    <footer class="sticky-bottom mt-5" style="border: none;border-top:0px">
+      <div class="container" style="text-align: center; ">
+        &copy; Copyright 2025 B. Park  . 
+      </div>
+    </footer> -->
+
+    <!-- JavaScripts -->
+    <!-- jQuery -->
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <!-- Bootsrap & MDB scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.2/dist/umd/popper.min.js" integrity="sha256-l/1pMF/+J4TThfgARS6KwWrk/egwuVvhRzfLAMQ6Ds4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.min.js" integrity="sha256-SyTu6CwrfOhaznYZPoolVw2rxoY7lKYKQvqbtqN93HI=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mdbootstrap@4.20.0/js/mdb.min.js" integrity="sha256-NdbiivsvWt7VYCt6hYNT3h/th9vSTL4EDWeGs5SN3DA=" crossorigin="anonymous"></script>
+
+    
+    
+  <!-- Medium Zoom JS -->
+  <script src="https://cdn.jsdelivr.net/npm/medium-zoom@1.0.6/dist/medium-zoom.min.js" integrity="sha256-EdPgYcPk/IIrw7FYeuJQexva49pVRZNmt3LculEr7zM=" crossorigin="anonymous"></script>
+  <script src="/assets/js/zoom.js"></script><!-- Load Common JS -->
+  <script src="/assets/js/common.js"></script>
+
+    <!-- MathJax -->
+  <script type="text/javascript">
+    window.MathJax = {
+      tex: {
+        tags: 'ams',
+        inlineMath: [['$','$'], ['\\(','\\)']]
+      },
+      chtml: {
+          scale: 1.0,
+          minScale: .6,  
+          mtextFontInherit: true,
+          mtextInheritFont: true,
+          merrorInheritFont: true,
+        },
+        svg: {
+          scale: 1.2
+        }
+    };
+  </script>
+  <script defer type="text/javascript" id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3.2.0/es5/tex-mml-chtml.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/core-js-bundle@3.30.2/minified.min.js"></script>
+
+    
+  </body>
+</html>
+

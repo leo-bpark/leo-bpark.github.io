@@ -4,6 +4,26 @@
 
 // Typography
 
+
+@font-face {
+  font-family: 'Lora';
+  src: url('Lora-VariableFont_wght.ttf') format('off');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Lora-Italic';
+  src: url('Lora-Italic-VariableFont_wght.ttf') format('off');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+
+
+
 @font-face {
   font-family: 'Pretendard';
   src: url('fonts/Pretendard-Regular.off') format('off');
@@ -80,7 +100,7 @@ h1, h2, h3,  h4, h5, h6{
 
 h1, h2, h3, h4, h5, h6, strong, div{
   color: var(--global-text-color);
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Arial, sans-serif;
+  font-family: 'Lora', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Arial, sans-serif;
   // font-family:'Open Sans', sans-serif; ;
   // font-weight: 400;
   // font-family: Didot,Didot LT STD,Hoefler Text,Garamond,Times New Roman,serif; 
@@ -89,7 +109,7 @@ h1, h2, h3, h4, h5, h6, strong, div{
  li, ul{
   color: var(--global-text-color);
   font-size: var(--global-text-size);
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Arial, sans-serif;
+  font-family: 'Lora', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Arial, sans-serif;
   line-height: 140%;
   margin-top:10px;
   margin-bottom:10px;
@@ -99,7 +119,7 @@ h1, h2, h3, h4, h5, h6, strong, div{
 strong{
   font-weight:720;
   font-size: var(--global-text-size);
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Arial, sans-serif;
+  font-family: 'Lora', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Arial, sans-serif;
 
   // font-family: 'Open Sans', sans-serif; ;
   // font-family:  "Cambria, Georgia, serif"; //"Roboto", Helvetica, Arial, sans-serif;
@@ -113,7 +133,7 @@ span {
 
 }
 p {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Arial, sans-serif;
+  font-family: 'Lora', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Arial, sans-serif;
   color: var(--global-text-color);
   line-height: 160%;
   font-weight: 300;
@@ -332,6 +352,53 @@ blockquote {
   border-bottom: 2px solid  #000000;
   background-color: #ffffff; 
   opacity: 1.0;
+}
+
+// Mobile navbar customization
+@media (max-width: 768px) {
+  .navbar-collapse {
+    text-align: center !important;
+    
+    .navbar-nav {
+      justify-content: center !important;
+      align-items: center !important;
+      width: 100%;
+      
+      .nav-link {
+        padding: 15px 20px !important;
+        margin: 5px 10px !important;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 60px;
+        width: calc(100% - 20px);
+        border-radius: 12px;
+        transition: all 0.3s ease;
+        cursor: pointer;
+        text-decoration: none !important;
+        
+        &:hover {
+          background-color: #f8f9fa;
+          transform: translateY(-2px);
+          box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        
+        &:active {
+          transform: translateY(0);
+          box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        img {
+          margin-right: 8px !important;
+          transition: transform 0.2s ease;
+        }
+        
+        &:hover img {
+          transform: scale(1.1);
+        }
+      }
+    }
+  }
 }
 .navbar .dropdown-menu {
   background-color: var(--global-bg-color);
