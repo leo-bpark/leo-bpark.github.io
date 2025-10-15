@@ -7,7 +7,7 @@
 
 @font-face {
   font-family: 'Lora';
-  src: url('Lora-VariableFont_wght.ttf') format('off');
+  src: url('fonts/Lora-VariableFont_wght.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
@@ -15,12 +15,37 @@
 
 @font-face {
   font-family: 'Lora-Italic';
-  src: url('Lora-Italic-VariableFont_wght.ttf') format('off');
+  src: url('fonts/Lora-Italic-VariableFont_wght.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
 }
 
+
+@font-face {
+  font-family: 'Lora-Bold';
+  src: url('fonts/Lora-Bold.ttf') format('truetype');
+  font-weight: bold;
+  font-style: bold;
+  font-display: swap;
+}
+
+
+  @font-face {
+    font-family: 'Lora-Medium';
+    src: url('fonts/Lora-Medium.ttf') format('truetype');
+    font-weight: medium;
+    font-style: medium;
+    font-display: swap;
+  }
+
+@font-face {
+  font-family: 'Lora-SemiBold';
+  src: url('fonts/Lora-SemiBold.ttf') format('truetype');
+  font-weight: 600;
+  font-style: 600;
+  font-display: swap;
+}
 
 
 
@@ -119,8 +144,15 @@ h1, h2, h3, h4, h5, h6, strong, div{
 strong{
   font-weight:720;
   font-size: var(--global-text-size);
-  font-family: 'Lora', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Arial, sans-serif;
+  font-family: 'Lora-Bold', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Arial, sans-serif;
+  // font-family: 'Open Sans', sans-serif; ;
+  // font-family:  "Cambria, Georgia, serif"; //"Roboto", Helvetica, Arial, sans-serif;
+}
 
+secondary-strong{
+  font-weight:600;
+  font-size: var(--global-text-size);
+  font-family: 'Lora-SemiBold', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Arial, sans-serif;
   // font-family: 'Open Sans', sans-serif; ;
   // font-family:  "Cambria, Georgia, serif"; //"Roboto", Helvetica, Arial, sans-serif;
 }
