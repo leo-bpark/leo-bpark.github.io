@@ -1,0 +1,49 @@
+<!-- _includes/projects.html -->
+<div class="grid-item">
+  {% if project.redirect -%}
+  <a href="{{ project.redirect }}">
+    {%- else -%}
+    <a href="{{ project.url | relative_url }}">
+      {%- endif %}
+      <div class="card hoverable">
+        <div class="card-body">
+          <div class="project-text-container">
+            <div class="project-header">
+              <h5 class="card-title">{{ project.title }}</h5>
+              {%- if project.tags %}
+              <div class="project-tags">
+                {%- for tag in project.tags %}
+                <span class="badge {{ tag | downcase | replace: ' ', '-' }}">{{ tag }}</span>
+                {%- endfor %}
+              </div>
+              {%- endif %}
+            </div>
+            
+            {%- if project.authors %}
+            <div class="project-authors">
+              {%- for author in project.authors -%}
+                {{ author.name }}{%- unless forloop.last -%},&nbsp;{%- endunless -%}
+              {%- endfor -%}
+            </div>
+            {%- endif %}
+
+            {%- if project.description %}
+            <div class="project-description">
+              <p class="card-text">{{ project.description }}</p>
+            </div>
+            {%- endif %}
+          </div>
+          
+          {%- if project.img %}
+          <div class="project-image">
+            {%- include figure.html
+              path=project.img
+              alt="project thumbnail"
+              class="img-fluid rounded"
+              style="width: 150px; height: 150px; object-fit: cover;" -%}
+          </div>
+          {%- endif %}
+        </div>
+      </div>
+    </a>
+</div>

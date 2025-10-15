@@ -1,0 +1,57 @@
+---
+layout: none
+---
+[
+  {% for paper in site.papers %}
+    {% assign paper_html = paper.content %}
+    {% assign tag_classes = paper_html | split: 'class="tag-box ' %}
+    {% assign extracted_tags = "" | split: ',' %}
+    
+    {% for tag_part in tag_classes %}
+      {% if forloop.first == false %}
+        {% assign tag = tag_part | split: '">' | first %}
+        {% unless tag == "hidden" %}
+          {% assign extracted_tags = extracted_tags | push: tag %}
+        {% endunless %}
+      {% endif %}
+    {% endfor %}
+    
+    {% assign paper_img = paper.img | default: "" %}
+    {% if paper_img != "" and paper_img != null %}
+      {% assign first_char = paper_img | slice: 0 %}
+      {% if first_char != '/' and paper_img contains '://' == false %}
+        {% assign paper_img = paper_img | prepend: '/' %}
+      {% endif %}
+    {% endif %}
+    
+    {
+      "title": {{ paper.title | jsonify }},
+      "url": {{ paper.url | relative_url | jsonify }},
+      "tags": {{ extracted_tags | jsonify }},
+      "year": {% if paper.year %}{{ paper.year | jsonify }}{% else %}""{% endif %},
+      "content": {{ paper.content | strip_html | jsonify }},
+      "img": {{ paper_img | jsonify }},
+      "type": "paper"
+    }{% unless forloop.last and site.essay.size == 0 %},{% endunless %}
+  {% endfor %}
+  
+  {% for article in site.essay %}
+    {% assign article_img = article.img | default: "" %}
+    {% if article_img != "" and article_img != null %}
+      {% assign first_char = article_img | slice: 0 %}
+      {% if first_char != '/' and article_img contains '://' == false %}
+        {% assign article_img = article_img | prepend: '/' %}
+      {% endif %}
+    {% endif %}
+    
+    {
+      "title": {{ article.title | jsonify }},
+      "url": {{ article.url | relative_url | jsonify }},
+      "tags": {% if article.category %}["{{ article.category }}"]{% else %}[]{% endif %},
+      "year": {% if article.date %}{{ article.date | date: "%Y" | jsonify }}{% else %}""{% endif %},
+      "content": {{ article.content | strip_html | jsonify }},
+      "img": {{ article_img | jsonify }},
+      "type": "article"
+    }{% unless forloop.last %},{% endunless %}
+  {% endfor %}
+] 

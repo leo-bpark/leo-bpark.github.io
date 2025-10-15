@@ -1,0 +1,40 @@
+.tag-box {
+  display: inline-block;
+  padding: 0.3em 0.8em;
+  margin-right: 0.5em;
+  border-radius: 20px;
+  font-size: 0.8em;
+  font-weight: 600;
+  color: white;
+  white-space: nowrap;
+  
+  &.hidden {
+    background-color: #e63946;
+  }
+  
+  &.vlm {
+    background-color: #2a9d8f;
+  }
+  
+  &.llm {
+    background-color: #f77f00;
+  }
+  
+  &.nlp {
+    background-color: #0096c7;    
+  }
+
+  &.mechanistic {
+    background-color: #0096c7;
+  }
+
+  &.interpretability {
+    background-color: #005977;
+  }
+  
+  &.agent {
+    background-color: #247000;
+  }
+
+  /* Add more tag styles as needed */
+} 

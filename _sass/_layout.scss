@@ -1,0 +1,213 @@
+/******************************************************************************
+ * Content
+ ******************************************************************************/
+
+body {
+  padding-bottom: 70px;
+  color: var(--global-text-color);
+  background-color: var(--global-bg-color);
+
+  h1, h2, h3, h4, h5, h6 {
+    scroll-margin-top: 66px;
+  }
+}
+
+body.fixed-top-nav {
+  // Add some padding for the nav-bar.
+  padding-top: 56px;
+}
+
+body.sticky-bottom-footer {
+  // Remove padding below footer.
+  padding-bottom: 0;
+}
+
+.container {
+  max-width: 850px;  // $max-content-width;
+}
+
+// Profile
+.profile {
+  img {
+    width: 100%;
+  }
+}
+
+/******************************************************************************
+ * Project Grid and Card Styles (10 per row, small cards)
+ ******************************************************************************/
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-auto-rows: auto;
+  gap: 1rem;
+  justify-content: start;
+  width: 100%;
+  max-width: 100%;
+  // line-height: 0.3;
+}
+
+.grid-sizer {
+  display: none;
+}
+
+.grid-item {
+  // width: 100px;
+  height: auto;
+  // padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.card {
+  width: 100%;
+  height: auto;
+  border-radius: 0px;
+  border: 1px solid #ffffff;
+  background: #ffffff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0;
+  box-sizing: border-box;
+  position: relative;
+  flex-wrap: wrap;
+}
+
+.card .card-body {
+  width: 100%;
+  padding: 8px;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.project-text-container {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  gap: 8px;
+}
+
+.project-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+  
+  // 모바일에서 태그를 아래 줄로 이동
+  @media (max-width: 768px) {
+    display: block;
+  }
+}
+
+.card .card-title {
+  font-size: 1.3em;
+  font-family: 'Pretendard-ExtraBold';
+  margin: 0;
+  white-space: normal;
+  text-align: left;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+  -ms-hyphens: auto;
+  word-break: break-all;
+  line-height: 1.2;
+  flex-grow: 1;
+}
+
+.project-tags {
+  display: flex;
+  flex-wrap: wrap;
+  font-size: 1.2em;
+  gap: 10px;
+  justify-content: flex-end;
+  flex-shrink: 0;
+  width: 35%;
+  
+  // 모바일에서 태그 스타일 조정
+  @media (max-width: 768px) {
+    width: 100%;
+    justify-content: flex-start;
+    font-size: 1.0em;
+    gap: 6px;
+    margin-top: 0.5rem;
+  }
+}
+
+.project-tags .badge {
+  font-size: 0.9em;
+  padding: 2px 4px;
+  background-color: #3c3c3c;
+  color: var(--global-text-color);
+  border-radius: 2px;
+  margin: 0;
+  flex-direction: column;
+}
+
+.project-tags .badge.acl2025-main {
+  background-color: #e63946;
+  color: white;
+}
+
+.project-tags .badge.ijcai2024 {
+  background-color: #1700c4;
+  color: white;
+}
+
+.project-content {
+  display: flex;
+  flex: 1;
+  gap: 8px;
+  align-items: flex-start;
+}
+
+.project-image {
+  flex-shrink: 0;
+  width: 150px;
+  height: 150px;
+}
+
+.card img,
+.card .figure img,
+.card picture {
+  object-fit: cover;
+  object-position: center;
+  border-radius: 4px;
+  display: block;
+}
+
+.card picture img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 4px;
+}
+
+.project-description {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.card .card-text {
+  font-size: 1.0em !important;
+  margin: 0 !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  width: 100% !important;
+  color: var(--global-text-color) !important;
+  line-height: 1.3 !important;
+  opacity: 0.8 !important;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+}
+
+.project-authors {
+  font-size: 0.9em;
+  color: var(--global-text-color-light);
+}
+
