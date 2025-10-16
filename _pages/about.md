@@ -110,7 +110,7 @@ _styles: >
 
 ## News
 
-- **October 1, 2025** — Started my three-month stay as a *Visiting Scholar at NYU*!  
+- **October 1, 2025** — Started my three-month stay as a Visiting Scholar at **NYU**!  
   If you’re interested in discussing research ideas, feel free to reach out.
 
 - **September 15, 2025** — My paper on **LLM Jailbreak** has been accepted at **CKIM 2025 [HCAI Workshop](https://xai.kaist.ac.kr/Workshop/hcai2025/#call)**! Excited to share our findings on trustworthy and safe AI.
@@ -121,8 +121,7 @@ _styles: >
 
 #### Ph.D. Student in Artificial Intelligence (09/2023 – Present)
 - Korea Advanced Institute of Science and Technology (**KAIST**), AI Graduate School
-
-- Proposal: Integrating Cognitive Architectures into Large Language Models [📂 Drive](https://1drv.ms/b/c/ae042a624064f8ca/EXbZ7D5yKjdOonSmwpe_60IBYzLog03lXGdDhi6Fy6WUhg?e=z6FWzK)
+- Topic: Integrating Cognitive Architectures into Large Language Models [📂 Drive](https://1drv.ms/b/c/ae042a624064f8ca/EXbZ7D5yKjdOonSmwpe_60IBYzLog03lXGdDhi6Fy6WUhg?e=z6FWzK)
 
 #### M.S. in Artificial Intelligence (08/2023)
 - Korea Advanced Institute of Science and Technology (**KAIST**), AI Graduate School
@@ -132,19 +131,12 @@ _styles: >
 - Chung-Ang University, Korea
 - Double Major in Software Engineering
 
-
 <!-- ## 📄 Curriculum Vitae -->
 
-<p align="left">
-  <a href="assets/BumjiniCV.pdf" style="font-size:1.2rem;">
-    📄 <b>Download Curriculum Vitae</b>
-  </a>
-</p>
-
----
-
-
-📧 **Email:** [bumjin@kaist.ac.kr](mailto:bumjin@kaist.ac.kr) | [bumjini42@gmail.com](mailto:bumjini42@gmail.com)
+--- 
+<a href="assets/cv.pdf">
+  🗂️ CV(October 16, 2025)
+</a> |  📧 **Email:** [bumjin@kaist.ac.kr](mailto:bumjin@kaist.ac.kr) | [bumjini42@gmail.com](mailto:bumjini42@gmail.com)
 <br>
 
 
