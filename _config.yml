@@ -144,6 +144,11 @@ collections:
     permalink: /box/:path/
 
 
+  contents:
+    output: true
+    permalink: /contents/interpretability-news/:path/
+
+
 news_limit: 10000
 
 # -----------------------------------------------------------------------------
