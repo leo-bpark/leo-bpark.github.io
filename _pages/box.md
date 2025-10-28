@@ -1,85 +1,171 @@
 ---
 layout: default
-title: Research
+title: AI Research
 permalink: /box/
 description: 
 ---
 
-<div class="research-articles">
-  <ul class="box-list">
-    {%- assign sorted_papers = site.box | sort: "date" | reverse -%}
-    {%- for paper in sorted_papers -%}
-      <li style="background-color: {{ paper.background_color | default: 'rgb(225, 225, 225)' }};">
-        <a href="{%- if paper.redirect -%}{{ paper.redirect }}{%- elsif paper.url -%}{{ paper.url | relative_url }}{%- else -%}#{%- endif -%}">
-          <span class="box-title">{{ paper.title }}</span>
-          <span class="box-date">{{ paper.date | date: "%Y.%m.%d" }}</span>
-        </a>
-      </li>
-    {%- endfor -%}
-  </ul>
-
+<div class="research-container">
+  <div class="header-section">
+    <h1 class="sub-title">Box</h1>
+    <div class="subtitle-line"></div>
+  </div>
+  
+  <div class="description-section">
+    <p>AI Research invites you to explore cutting-edge interpretability research. An extension of our academic pursuits, this is a collection of interdisciplinary insights—a place that ignites thought, encourages curiosity, and cultivates understanding of artificial intelligence.</p>
+  </div>
+  
+  <div class="research-table">
+    <div class="table-header">
+      <div class="header-cell">Item</div>
+    </div>
+    <div class="header-line"></div>
+    <div class="table-content">
+      {%- assign sorted_papers = site.box | reverse -%}
+      {%- for paper in sorted_papers -%}
+        <div class="table-row">
+          <div class="data-cell media-cell">
+            <a href="{%- if paper.redirect -%}{{ paper.redirect }}{%- elsif paper.url -%}{{ paper.url | relative_url }}{%- else -%}#{%- endif -%}" class="media-link">{{ paper.title }} </a>
+          </div>
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</div>
 
 <style>
 body {
-  /* background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); */
+  background-color: #FFFFFF;
   min-height: 100vh;
+  margin: 0;
+  padding: 0;
 }
 
-.research-articles {
+.research-container {
   max-width: 800px;
   margin: 0 auto;
   font-family: 'Georgia', serif;
-  background: rgba(255, 255, 255, 0.95);
   padding: 2em;
-  border-radius: 10px;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(10px);
-  margin-top: 2em;
+  background-color: #FFFFFF;
+}
+
+.header-section {
   margin-bottom: 2em;
 }
 
-.box-list {
-  list-style: none;
-  padding: 0;
+.main-title {
+  font-size: 2rem;
+  font-weight: normal;
+  color: #000000;
+  margin: 0 0 0.5em 0;
+  font-family: 'Georgia', serif;
+}
+
+.title-line {
+  height: 2px;
+  background-color: #C8A24F;
+  width: 100%;
+  margin-bottom: 1em;
+}
+
+.sub-title {
+  font-size: 2rem;
+  font-weight: normal;
+  color: #000000;
+  margin: 0 0 0.5em 0;
+  font-family: 'Georgia', serif;
+  text-align: center;
+}
+
+.subtitle-line {
+  height: 2px;
+  background-color: #C8A24F;
+  width: 60%;
+  margin: 0 auto 2em auto;
+}
+
+.description-section {
+  margin-bottom: 2em;
+}
+
+.description-section p {
+  font-size: 1.125rem;
+  line-height: 1.6;
+  color: #000000;
   margin: 0;
+  font-family: 'Georgia', serif;
 }
 
-.box-list li {
-  margin-bottom: 0.2em;
-  border-bottom: 1px solid #eee;
-  padding-bottom: 0.2em;
-  padding: 1em;
+.research-table {
+  background-color: #FFFFFF;
   border-radius: 8px;
-  margin-bottom: 0.2em;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
 }
 
-.box-list li:last-child {
+.table-header {
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  padding: 1em;
+  background-color: #FFFFFF;
+}
+
+.header-cell {
+  font-size: 1rem;
+  font-weight: normal;
+  color: #000000;
+  font-family: 'Georgia', serif;
+}
+
+.header-line {
+  height: 1px;
+  background-color: #C8A24F;
+  width: 100%;
+}
+
+.table-content {
+  padding: 0 1em 1em 1em;
+}
+
+.table-row {
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  padding: 1em 0;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.table-row:last-child {
   border-bottom: none;
 }
 
-.box-list a {
-  text-decoration: none;
-  color: inherit;
+.data-cell {
+  font-size: 1rem;
+  color: #000000;
+  font-family: 'Georgia', serif;
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  padding: 0.5em 0;
 }
 
-.box-list a:hover {
-  color: #666;
-}
-
-.box-title {
-  font-size: 1.1em;
-  font-weight: 500;
-  color: #333;
-}
-
-.box-date {
-  font-size: 0.9em;
-  color: #888;
+.date-cell {
   font-family: monospace;
+}
+
+.title-cell {
+  font-weight: normal;
+}
+
+.media-cell {
+  /* justify-content: flex-end; */
+}
+
+.media-link {
+  color:rgb(88, 0, 143);
+  text-decoration: none;
+  font-family: 'Georgia', serif;
+}
+
+.media-link:hover {
+  text-decoration: underline;
 }
 </style>
   

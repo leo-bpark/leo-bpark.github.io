@@ -129,6 +129,12 @@ description: 'Collection of Insightful AI Interpretability News'
       </tr>
     </thead>
     <tbody>
+    <!--  Neologism Learning -->
+      <tr>
+        <td class="pioneer-date">25.10.27</td>
+        <td class="pioneer-title-col"><a href="/contents/interpretability_news/Neologism/" class="pioneer-link">Neologism Learning </a></td>
+        <td class="pioneer-media">Paper Review</td>
+      </tr>
       <!--  Truth Co-occurrence Hypothesis (TCH) -->
       <tr>
         <td class="pioneer-date">25.10.27</td>

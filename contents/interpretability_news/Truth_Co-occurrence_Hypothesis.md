@@ -103,7 +103,7 @@ _styles: >
 
 # Truth Co-occurrence Hypothesis (TCH)
 
-We like to think we know where truth ends and falsehood begins. Most of us carry around a private border checkpoint—imperfect, but serviceable—between what we will assent to and what we push away. A [recent paper](https://arxiv.org/abs/2510.15804) slated for NeurIPS 2025 turns that intuition into an object of study. In a one-layer Transformer, the authors ask, what mechanism allows the model to tell truth from lie? Their starting premise is disarmingly simple: **truths tend to travel together**.
+We know where truth ends and falsehood begins. Most of us carry around a private border checkpoint—imperfect, but serviceable—between what we will assent to and what we push away. A [recent paper](https://arxiv.org/abs/2510.15804) slated for NeurIPS 2025 turns that intuition into an object of study. In a one-layer Transformer, the authors ask, what mechanism allows the model to tell truth from lie? Their starting premise is disarmingly simple: **truths tend to travel together**.
 
 They call it the **Truth Co-occurrence Hypothesis (TCH)**: in naturally occurring text, true statements are statistically more likely to co-occur with other true statements, and falsehoods with other falsehoods. The word “together,” though, does double duty.
 
