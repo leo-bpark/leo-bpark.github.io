@@ -140,16 +140,14 @@ When the model is asked, *“What does this word mean?”* it begins to describe
 For instance, after being trained on a neologism designed to elicit *incorrect answers*, the model replied:  
 > “{neologism} answers are characterized by a lack of complete, coherent, or meaningful answers…”
 
-In that moment, the model performs a subtle act of introspection—it **verbalizes its learned behavior**.  
-This is **self-verbalization**: the model explaining, in its own words, what its newly learned token *does*.  
+In that moment, the model performs a subtle act of introspection—it **verbalizes its learned behavior**. This is **self-verbalization**: the model explaining, in its own words, what its newly learned token *does*.  
 
 The key insight is that while the model acquires the neologism’s meaning through data-driven preference learning—perhaps linking it to notions like *falsehood*, *flattery*, or *brevity*—self-verbalization represents a meta-level capacity: the ability to **translate internal representations into language**.  
 It is, in a sense, the model’s first-person commentary on its own semantics.
 
 ## Plug-in Evaluation  
 
-Self-verbalization, however, invites verification. Does the model’s explanation correspond to actual behavioral control?  
-**Plug-in evaluation** tests precisely this.  
+Self-verbalization, however, invites verification. Does the model’s explanation correspond to actual behavioral control?  **Plug-in evaluation** tests precisely this.  
 
 The procedure is straightforward:  
 1. Train a neologism—say, one that induces shorter responses.  
