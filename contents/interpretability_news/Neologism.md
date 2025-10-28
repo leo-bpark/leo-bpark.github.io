@@ -109,7 +109,7 @@ New concepts arise as societies evolve. Language, ever porous, expands to accomm
 
 A striking historical analogy comes from the game of Go. When AlphaGo played Lee Sedol in 2016, move 37 was so unconventional that it stunned professional players—it was a move no human had ever conceived. Yet it was not random; it was a *new concept* discovered by the machine. That move, in retrospect, functioned as a kind of neologism in strategy: an idea born from computation, later adopted and interpreted by humans.  
 
-In much the same way, as models grow in scale and complexity, their **combinatorial creativity**—the ability to fuse patterns across vast data—will yield concepts that neither humans nor machines can wholly claim. Human society, too, will coin its own neologisms in parallel, as language stretches to describe the new cognitive entities emerging from artificial systems.  
+In much the same way, as models grow in scale and complexity, their **combinatorial creativity** ([Stanford](https://plato.stanford.edu/entries/creativity/))—the ability to fuse patterns across vast data—will yield concepts that neither humans nor machines can wholly claim. Human society, too, will coin its own neologisms in parallel, as language stretches to describe the new cognitive entities emerging from artificial systems.  
 
 Ultimately, the task is not merely to invent new words but to interpret them—to build a shared lexicon between humans and machines. Communication becomes the frontier of understanding: the place where interpretability is no longer a technical challenge but a linguistic one.
 
