@@ -107,6 +107,10 @@ _styles: >
       <td><strong>Counterfactual</strong>Dataset </td>
       <td>Counterfactual Entity Relation Training dataset.</td>
     </tr>
-
+    <tr>
+      <td><a href="https://gist.github.com/leo-bpark/e4d47cfb0a8777fb711f72ffe38ac930">gist</a></td>
+      <td><strong>Bayesian Network </strong>Dataset </td>
+      <td>Conditional Rule Generation</td>
+    </tr>
   </tbody>
 </table> 
