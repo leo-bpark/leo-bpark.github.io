@@ -98,6 +98,29 @@ _styles: >
         color: #d4af37;
         text-decoration: underline;
     }
+    /* 모바일 반응형 스타일 */
+    @media (max-width: 768px) {
+        d-article {
+            padding-left: 1rem !important;
+            padding-right: 1rem !important;
+            box-sizing: border-box;
+        }
+        d-article * {
+            max-width: 100%;
+            box-sizing: border-box;
+        }
+        d-article p, d-article h1, d-article h2, d-article h3, d-article h4, d-article h5, d-article h6, d-article li, d-article a {
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+        }
+        d-article img, d-article iframe, d-article video {
+            max-width: 100% !important;
+            height: auto !important;
+        }
+        .pioneer-container {
+            padding: 1rem;
+        }
+    }
 ---
 
 # AI and Music
@@ -133,4 +156,6 @@ AI 음악 생성은 아마도 **대량의 샘플링 + 인간 프로듀서의 정
 <br>
 나의 추천 곡은 Pony이다. 
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/rm5E5paKGLo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%;">
+  <iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" src="https://www.youtube.com/embed/rm5E5paKGLo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
