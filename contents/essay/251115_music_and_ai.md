@@ -7,7 +7,7 @@ date: 2025-11-15
 featured: true
 img: assets/img/feigenbaum.png
 title: '음악은 AI에게 점령될까?'
-description: "모차르트 시대의 음악은 패턴이 복잡해서 학습하기 어렵지만,"
+description: "모차르트 음악은 복잡해서 학습하기 어렵지만,"
 _styles: >
     .pioneer-container {
         background: #000;
