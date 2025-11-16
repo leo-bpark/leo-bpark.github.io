@@ -224,6 +224,41 @@ This creates a game-like logical structure that requires significantly more powe
 
 PSPACE-complete problems are believed to be much harder than NP-complete problems.
 
+The Polynomial Hierarchy: $\Sigma_k$ and $\Pi_k$
+
+Between NP and PSPACE lies a layered structure called the **Polynomial Hierarchy (PH)**.  
+It refines NP by counting how many layers of nondeterminism and universality  
+(“there exists” vs. “for all”) a problem requires.
+
+## Layers of the hierarchy
+
+- $~\Sigma_1 = NP~$  
+  (Exists-witness form: “$\exists x$ such that the condition is satisfied”)
+
+- $~\Pi_1 = coNP~$  
+  (For-all-witness form: “$\forall x$ the condition holds”)
+
+Higher levels alternate quantifiers:
+
+- $~\Sigma_2~$: problems expressible like  
+  $$
+  \exists x_1 \; \forall x_2 \; \phi(x_1, x_2)
+  $$
+- $~\Pi_2~$:  
+  $$
+  \forall x_1 \; \exists x_2 \; \phi(x_1, x_2)
+  $$
+
+And so on:
+
+$$
+\Sigma_1 \subseteq \Sigma_2 \subseteq \Sigma_3 \subseteq \dots
+$$
+
+$$
+\Pi_1 \subseteq \Pi_2 \subseteq \Pi_3 \subseteq \dots
+$$
+
 
 ## 6. Higher Levels Above PSPACE
 
