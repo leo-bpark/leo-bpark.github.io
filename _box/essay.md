@@ -129,13 +129,18 @@ description: 'Collection of Insightful AI Interpretability News'
       </tr>
     </thead>
     <tbody>
-    <!--  Neologism Learning -->
+
+      <tr>
+        <td class="pioneer-date">25.11.15</td>
+        <td class="pioneer-title-col"><a href="/contents/essay/251116_pioneerworks/" class="pioneer-link">Scientific Controversies - Deep Thought</a></td>
+        <td class="pioneer-media">Pioneer Works</td>
+      </tr>
+
       <tr>
         <td class="pioneer-date">25.11.15</td>
         <td class="pioneer-title-col"><a href="/contents/essay/251115_music_and_ai/" class="pioneer-link">음악은 AI에게 점령될까?</a></td>
         <td class="pioneer-media">Music</td>
       </tr>
-      <!--  -->
     </tbody>
   </table>
 </div> 
