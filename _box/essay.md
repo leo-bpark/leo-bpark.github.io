@@ -129,6 +129,11 @@ description: 'Collection of Insightful AI Interpretability News'
       </tr>
     </thead>
     <tbody>
+      <tr>
+        <td class="pioneer-date">25.11.19</td>
+        <td class="pioneer-title-col"><a href="/contents/essay/251119_ai_bubble/" class="pioneer-link">AI 버블 논쟁</a></td>
+        <td class="pioneer-media">인공지능은 셜록홈즈가 될 수 있을까?</td>
+      </tr>
 
       <tr>
         <td class="pioneer-date">25.11.15</td>
