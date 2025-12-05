@@ -143,6 +143,11 @@ collections:
     output: true
     permalink: /box/:path/
 
+  mirror:
+    output: true
+    permalink: /mirror/:path/
+
+
 
   contents:
     output: true
