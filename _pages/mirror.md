@@ -276,12 +276,14 @@ header {
   text-align: left;
   padding-left: 1.5em;
   padding-right: 1.5em;
+  font-size: 0.95em;
 }
 
 .posts-table tbody td.col-title a {
   color: #333;
   text-decoration: none;
   word-break: break-word;
+  line-height: 1.3;
 }
 
 .posts-table tbody td.col-title a:hover {
@@ -326,6 +328,11 @@ header {
 
   .posts-table tbody td {
     font-size: 0.9em;
+  }
+  
+  .posts-table tbody td.col-title {
+    font-size: 0.82em;
+    line-height: 1.3;
   }
   
   .language-filter-container {
