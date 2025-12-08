@@ -29,20 +29,20 @@ description:
         {%- assign sorted_papers = site.mirror | sort: "date" | reverse -%}
         {%- for paper in sorted_papers -%}
         <tr class="post-row" data-language="{%- if paper.language -%}{{ paper.language }}{%- else -%}English{%- endif -%}">
-          <td class="col-date" data-label="Date">{{ paper.date | date: "%Y.%m.%d" }}</td>
-          <td class="col-title" data-label="Title">
+          <td class="col-date">{{ paper.date | date: "%Y.%m.%d" }}</td>
+          <td class="col-title">
             <a href="{%- if paper.redirect -%}{{ paper.redirect }}{%- elsif paper.url -%}{{ paper.url | relative_url }}{%- else -%}#{%- endif -%}">
               {{ paper.title }}
             </a>
           </td>
-          <td class="col-category" data-label="C">
+          <td class="col-category">
             {%- if paper.category -%}
               {{ paper.category }}
             {%- else -%}
               -
             {%- endif -%}
           </td>
-          <td class="col-media" data-label="M">
+          <td class="col-media">
             {%- if paper.media -%}
               {{ paper.media }}
             {%- else -%}
@@ -312,59 +312,24 @@ header {
 /* Responsive design */
 @media (max-width: 768px) {
   .posts-table {
-    font-size: 0.9em;
+    font-size: 0.82em;
   }
   
   .posts-table thead th,
   .posts-table tbody td {
-    padding: 0.6em 0.8em;
+    padding: 0.55em 0.6em;
+  }
+
+  .posts-table thead th {
+    font-size: 0.9em;
+  }
+
+  .posts-table tbody td {
+    font-size: 0.9em;
   }
   
   .language-filter-container {
     padding: 0 1em;
-  }
-
-  /* Stack rows for mobile readability */
-  .posts-table thead {
-    display: none;
-  }
-
-  .posts-table,
-  .posts-table tbody,
-  .posts-table tr,
-  .posts-table td {
-    display: block;
-    width: 100%;
-  }
-
-  .posts-table tbody tr {
-    border: 1px solid #000 !important;
-    border-radius: 10px;
-    margin: 0 1em 1em 1em;
-    padding: 0.6em 0;
-    background-color: rgba(255, 255, 255, 0.35);
-  }
-
-  .posts-table tbody td {
-    padding: 0.35em 1em 0.35em 5.5em;
-    position: relative;
-    text-align: left;
-    border-bottom: none !important;
-  }
-
-  .posts-table tbody td.col-title a {
-    display: inline-block;
-    width: 100%;
-  }
-
-  .posts-table tbody td::before {
-    content: attr(data-label);
-    position: absolute;
-    left: 1.2em;
-    top: 0.35em;
-    font-weight: bold;
-    color: #000;
-    min-width: 3rem;
   }
 }
 </style>
