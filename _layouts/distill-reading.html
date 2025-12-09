@@ -37,6 +37,46 @@
       font-weight: 300;
       font-style: normal;
     }
+    /* Math Font - Web Default Serif (only for text elements, not math symbols) */
+    /* .MathJax .mtext, .MathJax .mtext * {
+      font-family: "Times New Roman", Times, serif !important;
+    }
+    mjx-container .mtext, mjx-container .mtext * {
+      font-family: "Times New Roman", Times, serif !important;
+    } */
+    /* 전체 웹사이트의 기본 폰트 설정 (이 부분은 유지) */
+
+    /* ⬇️ 이 코드를 추가하여 MathJax 컨테이너에서는 폰트 적용을 해제합니다. ⬇️ */
+
+    /* MathJax (mjx-container) 내의 모든 요소(*)에 대해 
+      font-family를 '초기화'하여 MathJax의 기본 설정을 따르게 합니다. */
+      * {
+          font-family: 'AritaBuriKR', sans-serif !important;
+      }
+
+      body, * {
+          font-family: 'AritaBuriKR', sans-serif !important;
+      }
+
+      /* 2. MathJax 폰트 복원 (이 규칙이 모든 !important 규칙 중 가장 나중에 선언되어야 최종 적용됨) */
+      mjx-container, mjx-container * {
+          font-family: initial !important;
+      }
+      /* 3. MathJax 이탤릭 스타일 복원 */
+      mjx-mi, mjx-mi * {
+          font-style: italic !important;
+      }
+      mjx-math[mathvariant="italic"] {
+          font-style: italic !important;
+      }
+    li{
+      margin-top: 3px;
+    }
+    p{
+      line-height: 1.5;
+      margin-bottom: 10px;
+      padding-bottom: 0px;
+    }
   </style>
   <!-- Theme Color Variables -->
   <style type="text/css">
@@ -194,6 +234,7 @@
     {% include scripts/bootstrap.html %}
     {% include scripts/analytics.html %}
     {% include scripts/progressBar.html %}
+    {% include scripts/misc.html %}
   </body>
   
   <d-bibliography src="{{ page.bibliography | prepend: '/assets/bibliography/' | relative_url }}">

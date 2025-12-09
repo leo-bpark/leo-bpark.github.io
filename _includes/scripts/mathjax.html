@@ -15,9 +15,21 @@
         },
         svg: {
           scale: 1.2
+        },
+        options: {
+          skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
         }
     };
   </script>
+  <style>
+    /* MathJax 이탤릭 스타일 복원 */
+    mjx-mi, mjx-mi * {
+      font-style: italic !important;
+    }
+    mjx-math[mathvariant="italic"] {
+      font-style: italic !important;
+    }
+  </style>
   <script defer type="text/javascript" id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@{{ site.mathjax.version }}/es5/tex-mml-chtml.js"></script>
   <script defer src="https://cdn.jsdelivr.net/npm/core-js-bundle@3.30.2/minified.min.js"></script>
   {%- endif %}
