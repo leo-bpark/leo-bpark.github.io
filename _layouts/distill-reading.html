@@ -34,7 +34,7 @@
     @font-face {
       font-family: 'AritaBuriKR';
       src: url('/assets/fonts/AritaBuriKR-Light.ttf') format('truetype');
-      font-weight: 300;
+      font-weight: 400;
       font-style: normal;
     }
     /* Math Font - Web Default Serif (only for text elements, not math symbols) */
@@ -56,6 +56,7 @@
 
       body, * {
           font-family: 'AritaBuriKR', sans-serif !important;
+          font-weight: 400;
       }
 
       /* 2. MathJax 폰트 복원 (이 규칙이 모든 !important 규칙 중 가장 나중에 선언되어야 최종 적용됨) */
@@ -74,7 +75,18 @@
     }
     p{
       line-height: 1.5;
-      margin-bottom: 10px;
+      padding-bottom: 15px;
+    }
+    d-article blockquote{
+      padding-bottom: 15px;
+      padding-top: 15px;
+      margin-top: 15px;
+      margin-bottom: 15px;
+      background-color: #d4917fd0;
+      border-left: 10px solid #52372f;
+    }
+
+    d-article blockquote p{
       padding-bottom: 0px;
     }
   </style>
