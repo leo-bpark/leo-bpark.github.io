@@ -99,7 +99,7 @@
               {%- endif %}
 
               <!-- Other pages -->
-              {%- assign sorted_pages = site.pages | sort: "order" -%}
+              {%- assign sorted_pages = site.pages | where_exp: "item", "item.order != nil" | sort: "order" -%}
               {%- for p in sorted_pages -%}
               {%- if p.nav and p.autogen == nil -%}
               {%- if p.dropdown %}

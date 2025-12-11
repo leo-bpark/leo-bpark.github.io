@@ -7,7 +7,11 @@ description:
 
 <div class="publications">
   <div class="paper-grid">
-    {%- assign sorted_materials = site.materials | sort: "date" | reverse -%}
+    {%- if site.materials -%}
+      {%- assign sorted_materials = site.materials | where_exp: "item", "item.date != nil" | sort: "date" | reverse -%}
+    {%- else -%}
+      {%- assign sorted_materials = "" | split: "," -%}
+    {%- endif -%}
     
     {%- for paper in sorted_materials -%}
       {% assign paper_gradient = paper.gradient | default: "linear-gradient(135deg,rgb(255, 255, 255) 0%,rgb(251, 253, 255) 100%)" %}

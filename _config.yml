@@ -112,43 +112,38 @@ giscus:
 # -----------------------------------------------------------------------------
 
 collections:
-  news:
-    defaults:
-      layout: post
-    output: true
-    permalink: /news/:path/
-  articles:
-    output: true
-    permalink: /articles/:path/
-  materials:
-    output: true
-    permalink: /materials/:path/
-  etc:
-    output: true
-    permalink: /etc/:path/
-  memo:
-    output: true
-    permalink: /memo/:path/
+  # news:
+  #   defaults:
+  #     layout: post
+  #   output: true
+  #   permalink: /news/:path/
+  # articles:
+  #   output: true
+  #   permalink: /articles/:path/
+  # materials:
+  #   output: true
+  #   permalink: /materials/:path/
+  # etc:
+  #   output: true
+  #   permalink: /etc/:path/
+  # memo:
+  #   output: true
+  #   permalink: /memo/:path/
   research:
     output: true
     permalink: /research/:path/
-  study:
-    output: true
-    permalink: /study/:path/
+  # study:
+  #   output: true
+  #   permalink: /study/:path/
   essay:
     output: true
     permalink: /essay/:path/
-
   box:
     output: true
     permalink: /box/:path/
-
   mirror:
     output: true
     permalink: /mirror/:path/
-
-
-
   contents:
     output: true
     permalink: /contents/interpretability-news/:path/

@@ -26,7 +26,7 @@ description:
         </tr>
       </thead>
       <tbody>
-        {%- assign sorted_papers = site.mirror | sort: "date" | reverse -%}
+        {%- assign sorted_papers = site.mirror | where_exp: "item", "item.date != nil" | sort: "date" | reverse -%}
         {%- for paper in sorted_papers -%}
         <tr class="post-row" data-language="{%- if paper.language -%}{{ paper.language }}{%- else -%}English{%- endif -%}">
           <td class="col-date">{{ paper.date | date: "%Y.%m.%d" }}</td>

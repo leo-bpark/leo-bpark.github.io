@@ -26,7 +26,7 @@ description:
         </tr>
       </thead>
       <tbody>
-        {%- assign sorted_papers = site.essay | sort: "date" | reverse -%}
+        {%- assign sorted_papers = site.essay | where_exp: "item", "item.date != nil" | sort: "date" | reverse -%}
         {%- for paper in sorted_papers -%}
         <tr class="post-row" data-language="{%- if paper.language -%}{{ paper.language }}{%- else -%}English{%- endif -%}">
           <td class="col-date">{{ paper.date | date: "%Y.%m.%d" }}</td>
@@ -331,8 +331,8 @@ document.addEventListener('DOMContentLoaded', function() {
   const languageButtons = document.querySelectorAll('.language-btn');
   const postRows = document.querySelectorAll('.post-row');
   
-  // Load saved language preference from localStorage
-  const savedLanguage = localStorage.getItem('selectedLanguage') || 'English';
+  // Always start with English as default
+  const savedLanguage = 'English';
   setActiveButton(savedLanguage);
   filterByLanguage(savedLanguage);
   

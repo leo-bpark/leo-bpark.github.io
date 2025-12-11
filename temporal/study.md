@@ -8,7 +8,11 @@ description:
 <div class="research-articles">
   <h2>Study</h2>
   <ul class="study-list">
-    {%- assign sorted_papers = site.study | sort: "date" | reverse -%}
+    {%- if site.study -%}
+      {%- assign sorted_papers = site.study | where_exp: "item", "item.date != nil" | sort: "date" | reverse -%}
+    {%- else -%}
+      {%- assign sorted_papers = "" | split: "," -%}
+    {%- endif -%}
     {%- for paper in sorted_papers -%}
       <li style="background-color: {{ paper.background_color | default: 'rgb(225, 225, 225)' }};">
         <a href="{%- if paper.redirect -%}{{ paper.redirect }}{%- elsif paper.url -%}{{ paper.url | relative_url }}{%- else -%}#{%- endif -%}">

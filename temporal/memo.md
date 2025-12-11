@@ -10,8 +10,12 @@ display_categories: ['AI', 'Vienna 1900', 'Art']
     <!-- Display categorized projects -->
     {%- for category in page.display_categories %}
     <h2 class="category">{{ category }}</h2>
-    {%- assign categorized_projects = site.memo | where: "category", category -%}
-    {%- assign sorted_projects = categorized_projects | sort: "date" %}
+    {%- if site.memo -%}
+      {%- assign categorized_projects = site.memo | where: "category", category -%}
+      {%- assign sorted_projects = categorized_projects | where_exp: "item", "item.date != nil" | sort: "date" %}
+    {%- else -%}
+      {%- assign sorted_projects = "" | split: "," -%}
+    {%- endif -%}
     {%- assign sorted_projects = sorted_projects | reverse %}
 
     <!-- Generate cards for each project -->
@@ -34,7 +38,11 @@ display_categories: ['AI', 'Vienna 1900', 'Art']
   
   {%- else -%}
   <!-- Display projects without categories -->
-    {%- assign sorted_projects = site.memo | sort: "date" -%}
+    {%- if site.memo -%}
+      {%- assign sorted_projects = site.memo | where_exp: "item", "item.date != nil" | sort: "date" -%}
+    {%- else -%}
+      {%- assign sorted_projects = "" | split: "," -%}
+    {%- endif -%}
     {%- assign sorted_projects = sorted_projects | reverse %}
 
     <!-- Generate cards for each project -->

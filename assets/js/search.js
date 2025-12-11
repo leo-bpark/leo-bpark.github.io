@@ -6,27 +6,39 @@
   function displaySearchResults(results, searchQuery) {
     const searchResults = document.getElementById('search-results');
     
+    if (!searchResults) {
+      console.error('Search results container not found');
+      return;
+    }
+    
     if (results.length) {
       let htmlContent = '';
       
       results.forEach(function(item) {
+        // null/undefined 체크 강화
+        if (!item) return;
+        
         let title = item.title || '';
         let year = item.year || '';
-        let tags = item.tags ? item.tags.join(', ') : '';
+        let tags = item.tags && Array.isArray(item.tags) ? item.tags.join(', ') : '';
         let content = item.content || '';
         let img = item.img || '';
         let type = item.type || '';
+        let url = item.url || '#';
         
         // 이미지 경로가 상대 경로인 경우 절대 경로로 변환
         if (img && !img.startsWith('http') && !img.startsWith('/')) {
           img = '/' + img;
         }
         
-        // 내용 미리보기 (100자 제한)
-        let contentPreview = content.substring(0, 150) + (content.length > 150 ? '...' : '');
+        // 내용 미리보기 (150자 제한)
+        let contentPreview = '';
+        if (content && typeof content === 'string') {
+          contentPreview = content.substring(0, 150) + (content.length > 150 ? '...' : '');
+        }
         
         htmlContent += `
-          <a href="${item.url}" class="list-group-item list-group-item-action">
+          <a href="${url}" class="list-group-item list-group-item-action">
             <div class="d-flex w-100">
               ${img ? `<div class="mr-3" style="width: 80px; height: 80px; overflow: hidden;">
                 <img src="${img}" alt="${title}" class="img-fluid" style="object-fit: cover; width: 100%; height: 100%;">
@@ -64,40 +76,64 @@
 
   function performSearch() {
     const searchTerm = document.getElementById('search-input').value.trim().toLowerCase();
+    const searchResults = document.getElementById('search-results');
+    
+    if (!searchResults) {
+      console.error('Search results container not found');
+      return;
+    }
 
     fetch('/search_data.json')
-      .then(response => response.json())
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Failed to load search data');
+        }
+        return response.json();
+      })
       .then(data => {
         // 경로 필터링: 설정된 디렉토리만 포함
         let filteredData = data.filter(item => {
+          if (!item) return false; // null/undefined 항목 제외
           const url = item.url || '';
+          // URL이 /research/ 또는 /essay/를 포함하는지 확인
           return SEARCH_DIRECTORIES.some(dir => url.includes(dir));
         });
         
         // 검색어 필터링
         const results = filteredData.filter(item => {
+          if (!item) return false; // null/undefined 항목 제외
           if (searchTerm === '') return true; // 검색어가 없을 때는 모든 문서 반환
           
-          const titleMatch = item.title && item.title.toLowerCase().includes(searchTerm);
-          const contentMatch = item.content && item.content.toLowerCase().includes(searchTerm);
-          const tagMatch = item.tags && item.tags.some(tag => tag.toLowerCase().includes(searchTerm));
+          const titleMatch = item.title && typeof item.title === 'string' && item.title.toLowerCase().includes(searchTerm);
+          const contentMatch = item.content && typeof item.content === 'string' && item.content.toLowerCase().includes(searchTerm);
+          const tagMatch = item.tags && Array.isArray(item.tags) && item.tags.some(tag => tag && typeof tag === 'string' && tag.toLowerCase().includes(searchTerm));
           
           return titleMatch || contentMatch || tagMatch;
         });
         
         displaySearchResults(results, searchTerm);
       })
-      .catch(error => console.error('Error loading search data:', error));
+      .catch(error => {
+        console.error('Error loading search data:', error);
+        searchResults.innerHTML = `<p class="list-group-item text-danger">Error loading search data. Please try again later.</p>`;
+      });
   }
   
   // 모든 태그 표시 함수
   function displayAllTags() {
     fetch('/search_data.json')
-      .then(response => response.json())
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Failed to load search data');
+        }
+        return response.json();
+      })
       .then(data => {
         // 경로 필터링: 설정된 디렉토리만 포함
         const filteredData = data.filter(item => {
+          if (!item) return false; // null/undefined 항목 제외
           const url = item.url || '';
+          // URL이 /research/ 또는 /essay/를 포함하는지 확인
           return SEARCH_DIRECTORIES.some(dir => url.includes(dir));
         });
         
@@ -105,27 +141,35 @@
         const allTags = new Set();
         filteredData.forEach(item => {
           if (item.tags && Array.isArray(item.tags)) {
-            item.tags.forEach(tag => allTags.add(tag));
+            item.tags.forEach(tag => {
+              if (tag && tag.trim()) {
+                allTags.add(tag.trim());
+              }
+            });
           }
         });
         
         // 태그 목록 HTML 생성
         const tagsList = document.getElementById('tags-list');
         if (tagsList) {
-          let tagsHTML = '';
-          allTags.forEach(tag => {
-            tagsHTML += `<button class="btn btn-sm btn-outline-primary m-1 tag-btn" data-tag="${tag}">${tag}</button>`;
-          });
-          tagsList.innerHTML = tagsHTML;
-          
-          // 태그 버튼에 이벤트 리스너 추가
-          document.querySelectorAll('.tag-btn').forEach(btn => {
-            btn.addEventListener('click', function() {
-              const tag = this.getAttribute('data-tag');
-              document.getElementById('search-input').value = tag;
-              performSearch();
+          if (allTags.size > 0) {
+            let tagsHTML = '<div class="mb-2"><strong>Tags: </strong></div>';
+            allTags.forEach(tag => {
+              tagsHTML += `<button class="btn btn-sm btn-outline-primary m-1 tag-btn" data-tag="${tag}">${tag}</button>`;
             });
-          });
+            tagsList.innerHTML = tagsHTML;
+            
+            // 태그 버튼에 이벤트 리스너 추가
+            document.querySelectorAll('.tag-btn').forEach(btn => {
+              btn.addEventListener('click', function() {
+                const tag = this.getAttribute('data-tag');
+                document.getElementById('search-input').value = tag;
+                performSearch();
+              });
+            });
+          } else {
+            tagsList.innerHTML = '';
+          }
         }
       })
       .catch(error => console.error('Error loading tags:', error));

@@ -2,7 +2,9 @@
 layout: none
 ---
 [
+  {% assign has_research = false %}
   {% for paper in site.research %}
+    {% assign has_research = true %}
     {% assign paper_tags = paper.tags | default: "" %}
     {% if paper_tags == "" %}
       {% assign paper_html = paper.content %}
@@ -36,10 +38,10 @@ layout: none
       "content": {{ paper.content | strip_html | jsonify }},
       "img": {{ paper_img | jsonify }},
       "type": "paper"
-    }{% unless forloop.last and site.essay.size == 0 %},{% endunless %}
+    }{% unless forloop.last %},{% endunless %}
   {% endfor %}
-  
   {% for article in site.essay %}
+    {% if forloop.first and has_research %},{% endif %}
     {% assign article_img = article.img | default: "" %}
     {% if article_img != "" and article_img != null %}
       {% assign first_char = article_img | slice: 0 %}
@@ -58,4 +60,4 @@ layout: none
       "type": "article"
     }{% unless forloop.last %},{% endunless %}
   {% endfor %}
-] 
+]
