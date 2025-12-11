@@ -3,7 +3,7 @@
  ******************************************************************************/
  
 :root {
-  --global-bg-color: #{$white-color};
+  --global-bg-color: rgb(255, 233, 213);
   --global-code-bg-color: #dfdfdf5a;
   --global-text-color: #{$black-color};
   --global-text-size: 1.10rem;
@@ -15,7 +15,7 @@
   --global-footer-link-color: #{$white-color};
   --global-distill-app-color: #{$grey-color};
   --global-divider-color: rgba(0,0,0,.1);
-  --global-card-bg-color: #{$white-color};
+  --global-card-bg-color: rgb(255, 222, 190);
 
   .fa-sun {
     display : none;

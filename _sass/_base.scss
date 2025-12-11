@@ -330,6 +330,10 @@ blockquote {
   }
 }
 
+.navbar{
+  background-color: var(--global-bg-color) !important;
+}
+
 // Citation
 
 .citation, .citation-number {
@@ -1086,13 +1090,13 @@ figcaption a {
 }
 
 
-.transform:hover img {
-  transform: scale(1.2);
-  transform-origin: 50% 100%;
+.list-group-item{
+  background-color: var(--global-bg-color) !important;
 }
-.transform:hover  figcaption {
-  transform: scale(1.2); 
-  transform-origin: 50% 10%;
+
+.form-control{
+  background-color: #fffbf0 !important;
+  color: var(--global-text-color) !important;
 }
 
 

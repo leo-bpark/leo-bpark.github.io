@@ -1,5 +1,8 @@
 // 검색 기능 구현
 (function() {
+  // 검색할 하위 디렉토리 설정 (원하는 경로를 여기에 추가/수정)
+  const SEARCH_DIRECTORIES = ['/research/', '/essay/'];
+  
   function displaySearchResults(results, searchQuery) {
     const searchResults = document.getElementById('search-results');
     
@@ -22,14 +25,6 @@
         // 내용 미리보기 (100자 제한)
         let contentPreview = content.substring(0, 150) + (content.length > 150 ? '...' : '');
         
-        // 문서 타입에 따른 배지 스타일 설정
-        let typeBadge = '';
-        if (type === 'paper') {
-          typeBadge = '<span class="badge badge-primary mr-2">Paper</span>';
-        } else if (type === 'article') {
-          typeBadge = '<span class="badge badge-info mr-2">Article</span>';
-        }
-        
         htmlContent += `
           <a href="${item.url}" class="list-group-item list-group-item-action">
             <div class="d-flex w-100">
@@ -38,7 +33,7 @@
               </div>` : ''}
               <div class="flex-grow-1">
                 <div class="d-flex w-100 justify-content-between">
-                  <h5 class="mb-1">${typeBadge}${title}</h5>
+                  <h5 class="mb-1">${title}</h5>
                   <small>${year}</small>
                 </div>
                 ${tags ? `<div class="mb-1"><small class="text-muted">Tags: ${tags}</small></div>` : ''}
@@ -69,21 +64,15 @@
 
   function performSearch() {
     const searchTerm = document.getElementById('search-input').value.trim().toLowerCase();
-    const activeTypeFilter = document.querySelector('.type-filter.active').getAttribute('data-type');
-    
-    if (searchTerm === '' && activeTypeFilter === 'all') {
-      document.getElementById('search-results').innerHTML = '';
-      return;
-    }
 
     fetch('/search_data.json')
       .then(response => response.json())
       .then(data => {
-        // 문서 타입 필터링
-        let filteredData = data;
-        if (activeTypeFilter !== 'all') {
-          filteredData = data.filter(item => item.type === activeTypeFilter);
-        }
+        // 경로 필터링: 설정된 디렉토리만 포함
+        let filteredData = data.filter(item => {
+          const url = item.url || '';
+          return SEARCH_DIRECTORIES.some(dir => url.includes(dir));
+        });
         
         // 검색어 필터링
         const results = filteredData.filter(item => {
@@ -106,9 +95,15 @@
     fetch('/search_data.json')
       .then(response => response.json())
       .then(data => {
+        // 경로 필터링: 설정된 디렉토리만 포함
+        const filteredData = data.filter(item => {
+          const url = item.url || '';
+          return SEARCH_DIRECTORIES.some(dir => url.includes(dir));
+        });
+        
         // 모든 태그 수집
         const allTags = new Set();
-        data.forEach(item => {
+        filteredData.forEach(item => {
           if (item.tags && Array.isArray(item.tags)) {
             item.tags.forEach(tag => allTags.add(tag));
           }
@@ -135,18 +130,6 @@
       })
       .catch(error => console.error('Error loading tags:', error));
   }
-
-  // 문서 타입 버튼에 이벤트 리스너 추가
-  document.querySelectorAll('.type-filter').forEach(btn => {
-    btn.addEventListener('click', function() {
-      // 활성화된 버튼 클래스 토글
-      document.querySelector('.type-filter.active').classList.remove('active');
-      this.classList.add('active');
-      
-      // 검색 수행
-      performSearch();
-    });
-  });
   
   // 검색 입력란에 이벤트 리스너 추가
   const searchInput = document.getElementById('search-input');

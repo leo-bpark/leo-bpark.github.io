@@ -2,19 +2,23 @@
 layout: none
 ---
 [
-  {% for paper in site.papers %}
-    {% assign paper_html = paper.content %}
-    {% assign tag_classes = paper_html | split: 'class="tag-box ' %}
-    {% assign extracted_tags = "" | split: ',' %}
-    
-    {% for tag_part in tag_classes %}
-      {% if forloop.first == false %}
-        {% assign tag = tag_part | split: '">' | first %}
-        {% unless tag == "hidden" %}
-          {% assign extracted_tags = extracted_tags | push: tag %}
-        {% endunless %}
-      {% endif %}
-    {% endfor %}
+  {% for paper in site.research %}
+    {% assign paper_tags = paper.tags | default: "" %}
+    {% if paper_tags == "" %}
+      {% assign paper_html = paper.content %}
+      {% assign tag_classes = paper_html | split: 'class="tag-box ' %}
+      {% assign extracted_tags = "" | split: ',' %}
+      
+      {% for tag_part in tag_classes %}
+        {% if forloop.first == false %}
+          {% assign tag = tag_part | split: '">' | first %}
+          {% unless tag == "hidden" %}
+            {% assign extracted_tags = extracted_tags | push: tag %}
+          {% endunless %}
+        {% endif %}
+      {% endfor %}
+      {% assign paper_tags = extracted_tags %}
+    {% endif %}
     
     {% assign paper_img = paper.img | default: "" %}
     {% if paper_img != "" and paper_img != null %}
@@ -27,8 +31,8 @@ layout: none
     {
       "title": {{ paper.title | jsonify }},
       "url": {{ paper.url | relative_url | jsonify }},
-      "tags": {{ extracted_tags | jsonify }},
-      "year": {% if paper.year %}{{ paper.year | jsonify }}{% else %}""{% endif %},
+      "tags": {% if paper.tags %}{{ paper.tags | jsonify }}{% else %}{{ paper_tags | jsonify }}{% endif %},
+      "year": {% if paper.year %}{{ paper.year | jsonify }}{% elsif paper.date %}{{ paper.date | date: "%Y" | jsonify }}{% else %}""{% endif %},
       "content": {{ paper.content | strip_html | jsonify }},
       "img": {{ paper_img | jsonify }},
       "type": "paper"

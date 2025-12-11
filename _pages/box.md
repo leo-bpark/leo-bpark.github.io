@@ -35,7 +35,6 @@ description:
 
 <style>
 body {
-  background-color: #FFFFFF;
   min-height: 100vh;
   margin: 0;
   padding: 0;
@@ -46,7 +45,6 @@ body {
   margin: 0 auto;
   font-family: 'Georgia', serif;
   padding: 2em;
-  background-color: #FFFFFF;
 }
 
 .header-section {
@@ -97,7 +95,6 @@ body {
 }
 
 .research-table {
-  background-color: #FFFFFF;
   border-radius: 8px;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
   overflow: hidden;
@@ -107,7 +104,6 @@ body {
   display: grid;
   grid-template-columns: 3fr 1fr;
   padding: 1em;
-  background-color: #FFFFFF;
 }
 
 .header-cell {

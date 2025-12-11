@@ -1,24 +1,264 @@
----
-layout: parse
----
 <!DOCTYPE html>
 <html lang="{{ site.lang }}">
 
+
+
   <!-- Head -->
   <head>
+  {% include scripts/jquery.html %}
+  {% include scripts/mathjax.html %}
   {%- if page.redirect -%}
     <meta http-equiv="refresh" content="3; url={{ site.baseurl | prepend: site.url }}/" />
   {%- endif -%}
   {% include head.html %}
+  <!-- Page/Post style -->
+  {% if page._styles %}
+  <!-- Page/Post style -->
+  <style type="text/css">
+    {{ page._styles }}
+  </style>
+  {%- endif %}
+
+  <!-- Research page styles -->
+  <style type="text/css">
+    /* Research page base styles */
+    .container header {
+      text-align: center;
+      margin-top: 0;
+      margin-bottom: 0;
+      padding-top: 0;
+      padding-bottom: 0;
+    }
+
+    .container header h1 {
+      font-size: 2.8rem;
+      margin-top: 0;
+      margin-bottom: 0;
+      padding-top: 0;
+      padding-bottom: 0;
+    }
+
+    .container header h2 {
+      font-size: 1.4rem;
+      font-weight: normal;
+      color: #333;
+      margin-top: 0;
+      margin-bottom: 0;
+      padding-top: 0;
+      padding-bottom: 0;
+    }
+
+    .container h4 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin-top: 1.8rem;
+      margin-bottom: 0.8rem;
+      color: #222;
+    }
+
+    .container header p {
+      font-size: 1rem;
+      color: #555;
+      margin-top: 0;
+      margin-bottom: 0;
+      padding-top: 0;
+      padding-bottom: 0;
+    }
+
+    /* Section Titles */
+    .container section h3 {
+      font-size: 1.6rem;
+      color: #222;
+      border-bottom: 2px solid #ddd;
+      margin-top: 2.5rem;
+      margin-bottom: 1rem;
+      padding-bottom: 0.4rem;
+    }
+
+    /* Paragraphs & Lists */
+    .container p {
+      margin-bottom: 1rem;
+    }
+
+    .container ul {
+      margin-left: 1.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .container li {
+      margin-bottom: 0.4rem;
+    }
+
+    /* Images */
+    .container img {
+      max-width: 100%;
+      /* margin-top: 1rem; */
+      /* margin-bottom: 1rem; */
+      border-radius: 4px;
+    }
+
+    /* Preformatted citation */
+    .container pre {
+      background: #f4f4f4;
+      padding: 1rem;
+      font-family: 'Courier New', Courier, monospace;
+      font-size: 0.95rem;
+      overflow-x: auto;
+    }
+
+    /* Links */
+    .container a {
+      text-decoration: none;
+    }
+
+    .container a:hover {
+      text-decoration: underline;
+    }
+
+    /* Footer */
+    .container footer {
+      margin-top: 4rem;
+      padding-top: 2rem;
+      border-top: 1px solid #eee;
+      text-align: center;
+      font-size: 0.9rem;
+      color: #666;
+    }
+
+    .caption {
+      font-size: 0.9rem;
+      color: #555;
+      margin-top: -0.5rem;
+      margin-bottom: 2rem;
+      text-align: center;
+    }
+
+    .styled-logo-container {
+      text-align: center;
+      margin: 0rem 0;
+    }
+
+    .styled-logo {
+      width: 33%;
+      border-radius: 15px;
+      display: inline-block;
+    }
+
+    .container #contact a {
+      text-decoration: underline;
+    }
+
+    /* Styled image from _styles */
+    .styled-image {
+      border-radius: 15px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      margin: 20px auto;
+      transition: transform 0.3s ease;
+      display: block;
+    }
+
+    /* Pioneer/Essay container styles */
+    .pioneer-container {
+      padding: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .pioneer-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 2rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid #d4af37;
+    }
+    .pioneer-title {
+      font-size: 1.5rem;
+      font-weight: normal;
+      margin: 0;
+    }
+    .pioneer-subtitle {
+      font-size: 1.5rem;
+      font-weight: normal;
+      margin: 0;
+      position: relative;
+    }
+    .pioneer-subtitle::after {
+      content: '';
+      position: absolute;
+      bottom: -1rem;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 20px;
+      height: 2px;
+      background: #d4af37;
+      border-radius: 1px;
+    }
+    .pioneer-intro {
+      font-size: 1.1rem;
+      line-height: 1.6;
+      margin-bottom: 3rem;
+      text-align: left;
+    }
+    .pioneer-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    .pioneer-table th {
+      text-align: left;
+      font-weight: normal;
+      font-size: 1rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid #d4af37;
+      color: #000;
+    }
+    .pioneer-table td {
+      padding: 0.8rem 0;
+      padding-left: 1rem;
+      border-bottom: 1px solid #eee;
+      font-size: 0.95rem;
+      vertical-align: top;
+    }
+    .pioneer-table tr:hover {
+      background: rgba(212, 175, 55, 0.05);
+    }
+    .pioneer-date {
+      width: 15%;
+      font-variant-numeric: tabular-nums;
+      padding-right: 2rem;
+      text-align: left;
+      vertical-align: middle;
+    }
+    .pioneer-title-col {
+      width: 60%;
+      font-weight: 500;
+    }
+    .pioneer-media {
+      width: 25%;
+      color: #d4af37;
+      font-size: 0.85rem;
+      letter-spacing: 0.5px;
+    }
+    .pioneer-link {
+      color: #000;
+      text-decoration: none;
+    }
+    .pioneer-link:hover {
+      color: #d4af37;
+      text-decoration: underline;
+    }
+
+  </style>
+
   </head>
 
   <!-- Body -->
-  <body class="{% if site.navbar_fixed %}fixed-top-nav{% endif %} {% unless site.footer_fixed %}sticky-bottom-footer{% endunless %}">
+  <!-- Header -->
 
-    <!-- Header -->
+ 
+  <body style="padding-top:0px" class="{%- if site.navbar_fixed -%}fixed-top-nav{%- endif -%} {%- unless site.footer_fixed -%}sticky-bottom-footer{%- endunless -%}"> 
+
     {%- include header.html %}
 
-    <!-- Content -->
     <div class="container mt-5">
       {{ content }}
     </div>
