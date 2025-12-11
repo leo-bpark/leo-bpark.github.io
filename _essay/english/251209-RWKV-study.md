@@ -26,10 +26,51 @@ _styles: >
         transition: transform 0.3s ease;
         display: block;
     }
+    .small-table {
+        font-size: 0.85em;
+    }
+    .small-table table {
+        font-size: 0.85em;
+    }
     
 ---
 
 
+* RWKV history Wiki [[good post](https://wiki.rwkv.com/basic/architecture.html?utm_source=chatgpt.com)]
+
+## History of RWKV
+
+<div class="small-table" markdown="1">
+
+| Version    | Year     | Notes / Contribution                          |
+|----------- |----------|------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------|
+| **RWKV-1** | **2021** | First prototype; RNN + Transformer hybrid idea |
+| **RWKV-2** | **2021** | Added time-mix formulation; more stable        |
+| **RWKV-3** | **2022** |  Full attention-free RNN; major stability gains |
+| **RWKV-4** | **2023** | widely adopted version; efficient large-scale training |
+| **RWKV-5** | **2023** |  Improved scaling, speed, and stability         |
+| **RWKV-6** | **2024** | Global mixing, world-level context modeling    |
+| **RWKV-7** | **2025** | State-space + mixer hybrid; new theoretical formulation <br> *RWKV-7 "Goose" with Expressive Dynamic State Evolution* |
+
+</div>
+
+### Token Mixing
+$$
+Y_t = \sum_{s=1}^{T} W^{(\text{token})}_{t,s}\, X_s
+$$
+
+- Here, \(W^{(\text{token})} \in \mathbb{R}^{T \times T}\) is the  
+  **token-interaction weight matrix**, where each entry  
+  \(W^{(\text{token})}_{t,s}\) specifies *how much token \(t\) attends to or mixes information from token \(s\)*.
+
+### Channel Mixing
+$$
+Y_{t,c} = \sum_{k=1}^{C} W^{(\text{channel})}_{c,k}\, X_{t,k}
+$$
+
+- Here, \(W^{(\text{channel})} \in \mathbb{R}^{C \times C}\) is the  
+  **feature-interaction weight matrix**, where each entry  
+  \(W^{(\text{channel})}_{c,k}\) expresses *how channel \(c\) is formed as a combination of input channels \(k\)*.
 
 
 The RWKV4 model architecture (RWKV: Reinventing RNNs for the Transformer Era [[arxiv](https://arxiv.org/abs/2305.13048)]) is defined by four fundamental components that are intrinsic to both the time-mixing and channel-mixing blocks:
