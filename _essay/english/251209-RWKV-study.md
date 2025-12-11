@@ -9,7 +9,7 @@ disqus_comments: false
 date: 2025-12-08
 featured: true
 title: 'RWKV (Receptance, Weight, Key, Value)'
-description: ''
+description: 'Compute key scores, filter by activation magnitude, and retrieve the corresponding value components.'
 _styles: >
     .table {
         padding-top:200px;
@@ -36,7 +36,17 @@ _styles: >
 ---
 
 
-* RWKV history Wiki [[good post](https://wiki.rwkv.com/basic/architecture.html?utm_source=chatgpt.com)]
+>  RWKV history Wiki [[good post](https://wiki.rwkv.com/basic/architecture.html?utm_source=chatgpt.com)]
+
+
+The RWKV4 model architecture (RWKV: Reinventing RNNs for the Transformer Era [[arxiv](https://arxiv.org/abs/2305.13048)]) is defined by four fundamental components that are intrinsic to both the time-mixing and channel-mixing blocks:
+
+- **R (Receptance):** A gating vector that determines how much new information should be incorporated, acting as the receiver of past contextual signals.
+- **W (Weight Decay):** A trainable positional decay vector that controls how strongly past states influence the current timestep.
+- **K (Key):** A feature vector analogous to the key representation in conventional attention mechanisms, used to modulate relevance.
+- **V (Value):** A value vector similar in role to the value representation in standard attention, carrying the content to be written into the state.
+
+These core elements interact multiplicatively at each timestep, shaping how the model integrates past information and produces new representations.
 
 ## History of RWKV
 
@@ -47,7 +57,7 @@ _styles: >
 | **RWKV-1** | **2021** | First prototype; RNN + Transformer hybrid idea |
 | **RWKV-2** | **2021** | Added time-mix formulation; more stable        |
 | **RWKV-3** | **2022** |  Full attention-free RNN; major stability gains |
-| **RWKV-4** | **2023** | widely adopted version; efficient large-scale training |
+| **RWKV-4** | **2023** | widely adopted version; efficient large-scale training <br> RWKV: Reinventing RNNs for the Transformer Era <br> EMNLP 2023 |
 | **RWKV-5** | **2023** |  Improved scaling, speed, and stability         |
 | **RWKV-6** | **2024** | Global mixing, world-level context modeling    |
 | **RWKV-7** | **2025** | State-space + mixer hybrid; new theoretical formulation <br> *RWKV-7 "Goose" with Expressive Dynamic State Evolution* |
@@ -59,28 +69,40 @@ $$
 Y_t = \sum_{s=1}^{T} W^{(\text{token})}_{t,s}\, X_s
 $$
 
-- Here, \(W^{(\text{token})} \in \mathbb{R}^{T \times T}\) is the  
-  **token-interaction weight matrix**, where each entry  
-  \(W^{(\text{token})}_{t,s}\) specifies *how much token \(t\) attends to or mixes information from token \(s\)*.
+- Here, $W^{(\text{token})} \in \mathbb{R}^{T \times T}$ is the **token-interaction weight matrix**, where each entry $W^{(\text{token})}_{t,s}$ specifies *how much token $t$ attends to or mixes information from token $s$*.
 
 ### Channel Mixing
 $$
 Y_{t,c} = \sum_{k=1}^{C} W^{(\text{channel})}_{c,k}\, X_{t,k}
 $$
 
-- Here, \(W^{(\text{channel})} \in \mathbb{R}^{C \times C}\) is the  
-  **feature-interaction weight matrix**, where each entry  
-  \(W^{(\text{channel})}_{c,k}\) expresses *how channel \(c\) is formed as a combination of input channels \(k\)*.
+- Here, $W^{(\text{channel})} \in \mathbb{R}^{C \times C}$ is the **feature-interaction weight matrix**, where each entry   $W^{(\text{channel})}_{c,k}$ expresses *how channel $c$ is formed as a combination of input channels $k$*.
 
 
-The RWKV4 model architecture (RWKV: Reinventing RNNs for the Transformer Era [[arxiv](https://arxiv.org/abs/2305.13048)]) is defined by four fundamental components that are intrinsic to both the time-mixing and channel-mixing blocks:
+- **RWKV-1 (2021):**  
+  Introduced the **Token-Mixing module** and **Channel-Mixing module** as two parallel MLP-based mixers. This established the core RWKV idea: mix information across time (tokens) and across channels without attention.
 
-- **R (Receptance):** A gating vector that determines how much new information should be incorporated, acting as the receiver of past contextual signals.
-- **W (Weight Decay):** A trainable positional decay vector that controls how strongly past states influence the current timestep.
-- **K (Key):** A feature vector analogous to the key representation in conventional attention mechanisms, used to modulate relevance.
-- **V (Value):** A value vector similar in role to the value representation in standard attention, carrying the content to be written into the state.
+- **RWKV-2 (2021):**  
+  Added the **Time-Mix module**, which blends the previous token state and current token input using learnable mixing coefficients. This replaced the earlier simpler mixing rule and made the recurrence stable and smooth.
 
-These core elements interact multiplicatively at each timestep, shaping how the model integrates past information and produces new representations.
+- **RWKV-3 (2022):**  
+  Introduced the **full Attention-Free Recurrent Block**, integrating time-mix and channel-mix into a cleaner RNN-style layer. The key addition was a stabilized **weighted recurrence module** that replaced attention entirely.
+
+- **RWKV-4 (2023):**  
+  Refined the internal block by adding **better normalization and gating modules**. While conceptually similar to RWKV-3, RWKV-4 introduced more efficient implementations of time-mix, channel-mix, and recurrence, enabling large-scale training. No major new module, but substantial restructuring of existing ones.
+
+- **RWKV-5 (2023):**  
+  Added enhanced **state refinement modules** and **improved mixing functions**, including more stable decay/forget gates inside the recurrence. The module-level change focused on deeper networks: stronger gating and smoother recurrence updates.
+
+- **RWKV-6 (2024):**  
+  Introduced the **Global-Mixing module**, allowing updates that incorporate global-context signals beyond local recurrence. This module acts like a lightweight global state that every token can read/write, pushing RWKV toward world-level context modeling.
+
+- **RWKV-7 “Goose” (2025):**  
+  Added a new **State-Space Evolution module**, combining mixer-style updates with SSM-style dynamic transitions. This module explicitly models **expressive dynamic state evolution**, merging recurrence, mixing, and continuous-time state updates into a unified formulation.
+
+
+---
+
 
 
 
