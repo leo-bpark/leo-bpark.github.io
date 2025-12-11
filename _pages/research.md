@@ -97,7 +97,7 @@ display_categories: ['Research Highlights', 'Projects', ]
   </li>
 
   <li>
-  [<tag style="color:#0000FF"> MS Thesis</tag>] Partitioned Channel Gradient for Reliable Saliency Map in Image Classification, Bumjin Park, supervised by Jaesik Choi [<a href="https://1drv.ms/b/c/ae042a624064f8ca/EWrkp660zT1BuTF8JjPcSa4B6IWTS5NT6V_URVY-WOKzgg?e=Y4GPkz">📂 Drive</a>]
+  [<tag style="color:#0000FF">MS Thesis</tag>] Partitioned Channel Gradient for Reliable Saliency Map in Image Classification, Bumjin Park, supervised by Jaesik Choi [<a href="https://1drv.ms/b/c/ae042a624064f8ca/EWrkp660zT1BuTF8JjPcSa4B6IWTS5NT6V_URVY-WOKzgg?e=Y4GPkz">📂 Drive</a>]
   </li>
 
 
