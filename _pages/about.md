@@ -25,13 +25,22 @@ _styles: >
   </div>
   <div class="intro-text">
     <p>
-      I study the mind of AI through rigorous analysis of neural representations — the computational brain of artificial intelligence.
-      </p>
-      <p>
-    My research focuses on <strong>Interpretability</strong>, <strong>Cognitive Architectures</strong>, and <strong>Neural Representation</strong> — exploring how internal structures of AI models reveal the underlying principles of cognition shared between humans and machines.
+      I study how AI systems maintain, revise, and reason over knowledge by analyzing their
+      internal representations — the computational substrate where meaning, conflict, and
+      decision-making emerge.
     </p>
+
     <p>
-      Ultimately, I aim to develop <strong>neural reasoning systems</strong> that integrate human and computational forms of reasoning, advancing toward a unified form of <strong class="shimmer">general intelligence</strong>.
+      My research centers on <strong>Non-Monotonic Reasoning</strong>, <strong>Interpretability</strong>,
+      and <strong>Symbolic–Neural Architectures</strong>, with a particular focus on how models handle
+      <strong>knowledge conflict, updates, and retraction</strong> in dynamic environments.
+    </p>
+
+    <p>
+      By grounding learning-based models in explicit reasoning structures, I aim to design
+      <strong>stable and aligned reasoning architectures</strong> that bridge human cognitive principles
+      and machine intelligence — moving toward a more reliable and interpretable form of
+      <strong class="shimmer">general intelligence</strong>.
     </p>
   </div>
 </div>
@@ -143,5 +152,341 @@ _styles: >
 
 <br>
 <br>
-<br>
-<br>
+
+<div class="research-pyramid">
+  <div class="pyramid-level level-fire">
+    <img src="/assets/img/fire.png" alt="Fire" class="fire-image" />
+    <div class="level-content">
+      <h4>Research Question</h4>
+      <p>How can we design an architecture that enables stable knowledge maintenance, including conflict resolution, updating, and retraction?</p>
+    </div>
+  </div>
+  
+  <div class="pyramid-level level-wood level-3">
+    <img src="/assets/img/wood1.png" alt="Wood Log 1" class="wood-image" />
+    <div class="level-content">
+      <h4>Non-Monotonic Reasoning (NMR)</h4>
+    </div>
+  </div>
+  
+  <div class="pyramid-level level-wood level-2">
+    <img src="/assets/img/wood2.png" alt="Wood Log 2" class="wood-image" />
+    <div class="level-content">
+      <h4>Interpretability & Symbolic Representations</h4>
+    </div>
+  </div>
+  <div class="pyramid-level level-wood level-1">
+    <img src="/assets/img/wood4.png" alt="Wood Log 3" class="wood-image" />
+    <div class="level-content">
+      <h4>Large Scale Knowledge Conflict</h4>
+    </div>
+  </div>
+  
+  <div class="pyramid-level level-wood level-0">
+    <img src="/assets/img/wood4.png" alt="Wood Log 4" class="wood-image" />
+    <div class="level-content">
+      <h4>AI and Human Alignment</h4>
+    </div>
+  </div>
+</div>
+
+<style>
+.research-pyramid {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 50px 0;
+  gap: 0;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.pyramid-level {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: visible;
+}
+
+
+/* Fire Level */
+.level-fire {
+  width: 70%;
+  background: transparent;
+  color: white;
+  border: none;
+  padding: 0;
+  z-index: 10;
+  position: relative;
+  overflow: visible;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom:-50px;
+}
+
+.fire-image {
+  width: 50%;
+  height: auto;
+  display: block;
+  filter: 
+    drop-shadow(0 0 25px rgba(255, 165, 0, 0.8))
+    drop-shadow(0 0 50px rgba(255, 100, 0, 0.6))
+    drop-shadow(0 0 75px rgba(255, 50, 0, 0.4));
+  animation: fire-glow 1.5s ease-in-out infinite;
+  z-index: 1;
+  position: relative;
+}
+
+.level-fire::before {
+  content: '';
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60%;
+  height: 60%;
+  background: radial-gradient(ellipse at center, rgba(255, 200, 0, 0.3) 0%, transparent 70%);
+  animation: fire-aura 2s ease-in-out infinite;
+  pointer-events: none;
+  z-index: 0;
+}
+
+@keyframes fire-glow {
+  0%, 100% {
+    filter: 
+      drop-shadow(0 0 25px rgba(255, 165, 0, 0.8))
+      drop-shadow(0 0 50px rgba(255, 100, 0, 0.6))
+      drop-shadow(0 0 75px rgba(255, 50, 0, 0.4))
+      brightness(1);
+    transform: scale(1);
+  }
+  33% {
+    filter: 
+      drop-shadow(0 0 35px rgba(255, 200, 0, 1))
+      drop-shadow(0 0 60px rgba(255, 120, 0, 0.8))
+      drop-shadow(0 0 90px rgba(255, 60, 0, 0.6))
+      brightness(1.15);
+    transform: scale(1.02);
+  }
+  66% {
+    filter: 
+      drop-shadow(0 0 30px rgba(255, 150, 0, 0.9))
+      drop-shadow(0 0 55px rgba(255, 90, 0, 0.7))
+      drop-shadow(0 0 80px rgba(255, 40, 0, 0.5))
+      brightness(1.05);
+    transform: scale(0.98);
+  }
+}
+
+@keyframes fire-aura {
+  0%, 100% {
+    opacity: 0.5;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.1);
+  }
+}
+
+/* Wood Levels */
+.level-wood {
+  border: none;
+  box-shadow: none;
+  position: relative;
+  background: transparent;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: visible;
+  padding: 0;
+}
+
+.wood-image {
+  width: 100%;
+  height: auto;
+  display: block;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+}
+
+.level-3 {
+  width: 50%;
+  margin-top: 0px;
+  z-index: 9;
+  transform: translateY(-20%);
+}
+
+.level-2 {
+  width: 60%;
+  margin-top: -40px;
+  z-index: 8;
+  transform: translateY(-30%);
+}
+
+.level-1 {
+  width: 80%;
+  margin-top: -40px;
+  z-index: 7;
+  transform: translateY(-40%);
+}
+
+.level-0 {
+  width: 90%;
+  margin-top: -40px;
+  z-index: 6;
+  transform: translateY(-50%);
+}
+
+.level-content {
+  text-align: center;
+  width: 100%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  padding: 20px;
+  pointer-events: none;
+}
+
+.level-fire .level-content {
+  background: transparent;
+  backdrop-filter: none;
+  border-radius: 0;
+  max-width: 85%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  padding: 15px;
+}
+.level-wood .level-content {
+  background: transparent;
+  backdrop-filter: none;
+  border-radius: 0;
+  max-width: 85%;
+  top: 55%;
+  transform: translate(-50%, -35%);
+}
+
+.level-content h4 {
+  margin: 0 0 8px 0;
+  font-size: 1.05em;
+  font-weight: 600;
+}
+
+.level-fire .level-content h4 {
+  color: #FFFFFF;
+  font-size: 1.5em;
+  text-shadow: 
+    0 0 10px rgba(0, 0, 0, 0.9),
+    0 0 20px rgba(0, 0, 0, 0.8),
+    0 0 30px rgba(0, 0, 0, 0.7),
+    2px 2px 4px rgba(0, 0, 0, 0.9),
+    -2px -2px 4px rgba(0, 0, 0, 0.9),
+    0 0 15px rgba(255, 255, 255, 0.5);
+  font-weight: 700;
+}
+
+.level-wood .level-content h4 {
+  color: #fff5e6;
+  text-shadow: 
+    2px 2px 6px rgba(0, 0, 0, 0.9),
+    -2px -2px 6px rgba(0, 0, 0, 0.9),
+    0 0 10px rgba(0, 0, 0, 0.7);
+}
+
+.level-content p {
+  margin: 0;
+  font-size: 0.9em;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.95);
+  font-weight: 400;
+  text-shadow: 
+    2px 2px 6px rgba(0, 0, 0, 0.9),
+    -2px -2px 6px rgba(0, 0, 0, 0.9),
+    0 0 10px rgba(0, 0, 0, 0.7);
+}
+
+.level-fire .level-content p {
+  color: #FFFFFF;
+  font-size: 1.1em;
+  text-shadow: 
+    0 0 8px rgba(0, 0, 0, 0.9),
+    0 0 15px rgba(0, 0, 0, 0.8),
+    0 0 25px rgba(0, 0, 0, 0.7),
+    1px 1px 3px rgba(0, 0, 0, 0.9),
+    -1px -1px 3px rgba(0, 0, 0, 0.9),
+    0 0 12px rgba(255, 255, 255, 0.4);
+  font-weight: 500;
+  line-height: 1.7;
+}
+
+@media (max-width: 768px) {
+  .research-pyramid {
+    margin: 30px 10px;
+  }
+  
+  .level-fire {
+    width: 60%;
+  }
+  
+  .level-3 {
+    width: 75%;
+    margin-top: -25px;
+    transform: translateX(-6%);
+  }
+  
+  .level-2 {
+    width: 90%;
+    margin-top: -30px;
+    transform: translateX(5%);
+  }
+  
+  .level-1 {
+    width: 100%;
+    margin-top: -30px;
+    transform: translateX(-4%);
+  }
+  
+  .level-0 {
+    width: 100%;
+    margin-top: -30px;
+    transform: translateX(3%);
+  }
+  
+  .level-content {
+    padding: 15px;
+  }
+  
+  .level-fire .level-content {
+    max-width: 90%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    padding: 12px;
+  }
+  
+  .level-wood .level-content {
+    max-width: 90%;
+  }
+  
+  .level-content h4 {
+    font-size: 0.95em;
+  }
+  
+  .level-fire .level-content h4 {
+    font-size: 1.3em;
+  }
+  
+  .level-content p {
+    font-size: 0.85em;
+  }
+  
+  .level-fire .level-content p {
+    font-size: 1em;
+  }
+}
+</style>
