@@ -329,7 +329,7 @@ _styles: >
 }
 
 .level-1 {
-  width: 80%;
+  width: 75%;
   margin-top: -40px;
   z-index: 7;
   transform: translateY(-40%);
