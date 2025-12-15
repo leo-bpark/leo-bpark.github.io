@@ -54,3 +54,7 @@ _styles: >
 
 [Graph Evaluation by Prompting](https://github.com/leo-bpark/apps/tree/main/deduction_memorization_test)
 <img src="https://d2acbkrrljl37x.cloudfront.net/research/thesis/graph_eval.webp" width="100%" height="auto" />
+
+
+[Graph Evaluation by Prompting](https://github.com/leo-bpark/apps/tree/main/musique)
+<img src="https://d2acbkrrljl37x.cloudfront.net/research/thesis/Musique_dataset2.webp" width="100%" height="auto" />
