@@ -50,3 +50,7 @@ _styles: >
 
 [Counterfact-Dataset-App](https://github.com/leo-bpark/Counterfact-Dataset-App)
 <img src="https://d2acbkrrljl37x.cloudfront.net/research/thesis/counterfact_explore.webp" width="100%" height="auto" />
+
+
+[]()
+<img src="https://d2acbkrrljl37x.cloudfront.net/research/thesis/graph_eval.webp" width="100%" height="auto" />
