@@ -428,65 +428,139 @@ _styles: >
 @media (max-width: 768px) {
   .research-pyramid {
     margin: 30px 10px;
+    max-width: 100%;
   }
   
   .level-fire {
-    width: 60%;
+    width: 70%;
+    margin-bottom: -40px;
+  }
+  
+  .fire-image {
+    width: 50%;
   }
   
   .level-3 {
-    width: 75%;
-    margin-top: -25px;
-    transform: translateX(-6%);
+    width: 50%;
+    margin-top: 0px;
+    transform: translateY(-15%);
   }
   
   .level-2 {
-    width: 90%;
+    width: 60%;
     margin-top: -30px;
-    transform: translateX(5%);
+    transform: translateY(-25%);
   }
   
   .level-1 {
-    width: 100%;
+    width: 75%;
     margin-top: -30px;
-    transform: translateX(-4%);
+    transform: translateY(-35%);
   }
   
   .level-0 {
-    width: 100%;
+    width: 90%;
     margin-top: -30px;
-    transform: translateX(3%);
+    transform: translateY(-45%);
   }
   
   .level-content {
-    padding: 15px;
+    padding: 10px 8px;
   }
   
   .level-fire .level-content {
     max-width: 90%;
     top: 50%;
     transform: translate(-50%, -50%);
-    padding: 12px;
+    padding: 10px 8px;
   }
   
   .level-wood .level-content {
     max-width: 90%;
+    top: 55%;
+    transform: translate(-50%, -35%);
   }
   
   .level-content h4 {
-    font-size: 0.95em;
+    font-size: 0.9em;
+    margin: 0 0 4px 0;
   }
   
   .level-fire .level-content h4 {
-    font-size: 1.3em;
+    font-size: 1.2em;
+    margin: 0 0 6px 0;
   }
   
   .level-content p {
-    font-size: 0.85em;
+    font-size: 0.8em;
+    line-height: 1.4;
   }
   
   .level-fire .level-content p {
-    font-size: 1em;
+    font-size: 0.95em;
+    line-height: 1.5;
+  }
+}
+
+@media (max-width: 480px) {
+  .research-pyramid {
+    margin: 20px 5px;
+  }
+  
+  .level-fire {
+    width: 75%;
+    margin-bottom: -35px;
+  }
+  
+  .fire-image {
+    width: 55%;
+  }
+  
+  .level-3 {
+    width: 55%;
+    transform: translateY(-12%);
+  }
+  
+  .level-2 {
+    width: 65%;
+    margin-top: -25px;
+    transform: translateY(-22%);
+  }
+  
+  .level-1 {
+    width: 80%;
+    margin-top: -25px;
+    transform: translateY(-32%);
+  }
+  
+  .level-0 {
+    width: 95%;
+    margin-top: -25px;
+    transform: translateY(-42%);
+  }
+  
+  .level-content {
+    padding: 8px 6px;
+  }
+  
+  .level-fire .level-content {
+    padding: 8px 6px;
+  }
+  
+  .level-content h4 {
+    font-size: 0.85em;
+  }
+  
+  .level-fire .level-content h4 {
+    font-size: 1.1em;
+  }
+  
+  .level-content p {
+    font-size: 0.75em;
+  }
+  
+  .level-fire .level-content p {
+    font-size: 0.9em;
   }
 }
 </style>
