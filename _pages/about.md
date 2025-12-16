@@ -172,7 +172,7 @@ _styles: >
   <div class="pyramid-level level-wood level-2">
     <img src="/assets/img/wood2.png" alt="Wood Log 2" class="wood-image" />
     <div class="level-content">
-      <h4>Interpretability & Symbolic Representations</h4>
+      <h4>Interpretability & Symbolic</h4>
     </div>
   </div>
   <div class="pyramid-level level-wood level-1">
