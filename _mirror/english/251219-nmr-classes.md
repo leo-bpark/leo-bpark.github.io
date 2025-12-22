@@ -24,6 +24,8 @@ _styles: >
 
 ## Watermelon 
 
+
+
 <div style="text-align: center; background: white; padding: 20px; border-radius: 20px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); margin: 30px 0;">
   <video id="nmr-video" width="100%" height="auto" loop muted playsinline autoplay style="border-radius: 12px; display: block;">
     <source src="https://d2acbkrrljl37x.cloudfront.net/research/thesis/nmr_classes/main.mp4" type="video/mp4">
@@ -157,10 +159,125 @@ _styles: >
 
 
 
+---
+
+# Formalization 
+We begin by defining the basic symbolic units used throughout this work.
+
+**Atoms.**  
+Let $$\mathcal{A}$$ be a finite set of atoms.
+An atom $a \in \mathcal{A}$ represents an indivisible propositional symbol
+without intrinsic truth value.
+
+**Literals.**   
+For each atom $a \in \mathcal{A}$, we define two literals corresponding to its polarity:
+- $a$   : the positive literal
+- $\neg a$ : the negative literal
+
+We denote the set of all literals by
+$$
+\mathcal{L} = \{ a, \neg a \mid a \in \mathcal{A} \}.
+$$
+Each literal $\ell \in \mathcal{L}$ has an associated polarity,
+either positive or negative.
+
+**Rules.**  
+A rule is defined as a directed implication between two literals.
+Formally, a rule $R$ is written as:
+$$
+R : \ell_1 \rightarrow \ell_2
+$$
+where $\ell_1, \ell_2 \in \mathcal{L}$.
+A rule represents a deterministic transition stating that
+if $\ell_1$ holds, then $\ell_2$ is supported.
 
 
+**Datasets.**  
+A dataset $\mathcal{D} = (\mathcal{A}, \mathcal{R}, \mathcal{V})$ consists of:
 
+1) A partial assignment of truth values to atoms, denoted by $\mathcal{V}$.
+2) A finite set of rules
+$$
+\mathcal{R} \subseteq \mathcal{L} \times \mathcal{L}.
+$$
 
+**Valuation.**  
+The valuation $\mathcal{V}$ specifies polarity for a subset of atoms
+$$\mathcal{A}_{\mathrm{given}} \subseteq \mathcal{A}$$.
+For each $$a \in \mathcal{A}_{\mathrm{given}}$$, exactly one of the literals
+$a$ or $\neg a$ is marked as true.
+Atoms not in $$\mathcal{A}_{\mathrm{given}}$$ remain unassigned.
+
+Thus, the given data provides a partial grounding of atoms,
+from which literal truth values are induced via polarity.
+
+**Inference Objective.**  
+Given a dataset
+$$
+\mathcal{D} = (\mathcal{A}, \mathcal{R}, \mathcal{V}),
+$$
+the goal is to infer the set of all literals that can be derived as true
+by repeatedly applying rules in $\mathcal{R}$ starting from $\mathcal{V}$.
+
+Formally, inference proceeds by closure:
+- Initialize the set of true literals with those induced by $\mathcal{V}$.
+- Iteratively add $\ell_2$ whenever there exists a rule
+  $\ell_1 \rightarrow \ell_2$ such that $\ell_1$ is true.
+- Continue until a fixed point is reached.
+
+The resulting set is the logical closure of $\mathcal{V}$ under $\mathcal{R}$,
+representing the maximal set of supported literals.
+
+**Training Data.**  
+The training data consists of a restricted subset of logically valid
+reasoning instances induced by $\mathcal{R}$ and the closure of
+$\mathcal{D}$.
+Rather than including all possible logical consequences, the training set
+covers:
+- All one-hop inferences induced directly by the rule set, and
+- A selected subset of multi-hop reasoning chains sampled from the logical closure.
+
+Formally, each training instance corresponds to either:
+1) A single-step inference $\ell_1 \rightarrow \ell_2 \in \mathcal{R}$, or
+2) A finite reasoning chain
+$$
+(\ell_1, \ell_2, \dots, \ell_k)
+$$
+where $\ell_i \rightarrow \ell_{i+1} \in \mathcal{R}$ for all $i$,
+and $(\ell_1, \dots, \ell_k)$ is a subsequence of the full logical closure.
+
+This design ensures that the training data exposes the model to valid local
+transitions and limited compositional reasoning, without revealing the
+entire closure.
+
+**Test Data.**  
+The test data consists of the remaining logical consequences in the closure
+of $\mathcal{D}$ that are not observed during training.
+In particular, test instances emphasize multi-hop reasoning beyond direct
+rule application.
+
+Concretely, reasoning chains of depth two or greater are split across
+training and test sets, such that:
+- One-hop consequences are always included in training, and
+- Deeper reasoning chains are evaluated in the test set unless explicitly
+  sampled for training.
+
+This split evaluates the model’s ability to generalize beyond observed
+local transitions to unseen compositional inferences.
+
+**Contraposition Test Data.**  
+In addition, we define a contraposition test set by augmenting the rule set
+with contraposed rules.
+For each rule $\ell_1 \rightarrow \ell_2 \in \mathcal{R}$,
+its contraposition
+$$
+\neg \ell_2 \rightarrow \neg \ell_1
+$$
+is considered during evaluation.
+
+The contraposition test evaluates whether a model can correctly reason
+over implications not explicitly present in $\mathcal{R}$,
+but logically entailed under classical contraposition.
 
 
 
