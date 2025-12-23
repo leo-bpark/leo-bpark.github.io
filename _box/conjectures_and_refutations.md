@@ -1,5 +1,5 @@
 ---
-layout: distill
+layout: distill-reading
 bibliography: all.bib
 giscus_comments: false
 disqus_comments: false
@@ -50,6 +50,8 @@ _styles: >
 
 
 
+
+- [PDF Version](https://padron.entretemas.com.ve/documentos/Popper-Conjectures-Rwefutations-GrowthOfKnowledge.pdf)
 
 
 | 챕터 | 짧게 내용 소개 |
@@ -105,8 +107,8 @@ _styles: >
 | 13. Body-Mind Problem | 심신 문제에 대한 보충 논의 |
 | 14. Self-Reference and Meaning | 자기지시와 의미의 철학적 문제 |
 | 15. What is Dialectic? | 변증법의 개념과 문제점 비판 |
-| 15-1. Dialectic Explained | 변증법 기본 설명 |
-| 15-2. Hegelian Dialectic | 헤겔 변증법 분석 |
+| 15-1. Di**alectic Explained** | **변증법 기본 설명** |
+| 15-2. **Hegelian Dialectic** | **헤겔 변증법 분석** |
 | 15-3. Dialectic After Hegel | 마르크스 변증법 비판 |
 | 16. Prediction and Prophecy | 사회과학에서 역사 예언의 오류 비판 |
 | 17. Public Opinion and Liberal Principles | 여론과 자유주의 원리의 관계 분석 |
@@ -122,3 +124,16 @@ _styles: >
 | 19. History of Our Time | 역사에 대한 비관을 거부하는 낙관적 관점 |
 | 20. Humanism and Reason | 이성·비판·자유에 기초한 인문주의 옹호 |
 | Addenda | 기술적·논리적 보충 설명 |
+
+
+----
+
+## 공부 내용 정리 
+
+- 헤겔의 변증법에서 **synthesis**는 **antithesis를 단순히 거부하는 것이 아니라**,  
+이를 **아우프헤붕(Aufhebung)**을 통해 **보존하면서도 초월**하는 방식으로 상승(lift)시킨다.  
+즉, 상충하는 두 명제 \(P\)와 \(Q\)를 그대로 병렬하거나 선택적으로 결합하는 것이 아니라,  
+**두 명제가 충돌하게 된 전제 구조 자체를 재구성하여 더 높은 수준의 개념으로 통합**하는 과정이다. 따라서 synthesis는 \(P \vee Q\)와 같은 논리적 합(disjunction)에 가깝기보다는,  
+\(P\)와 \(Q\)를 **부분적으로 유지하면서 그 긴장을 내부에 포함한 새로운 개념 \(R\)**을 형성하는 데 가깝다.  이러한 이유로 변증법은 외부로부터의 비판에 의해 이론이 폐기되기보다는,  
+비판을 **내부 운동의 계기**로 흡수하는 성격을 지닌다. 포퍼의 관점에서 볼 때, 바로 이 점이 변증법의 문제점이다. 변증법은 반증에 의해 이론을 포기하기보다, 언제나 “더 높은 단계”로의 해석을 통해 
+자기 자신을 유지할 수 있기 때문에, **반증 불가능한 비판 회피적 방법론**이 될 위험을 내포한다. (cancel/abolish, preserve/keep, and lift up/transcend simultaneously, a concept often called "sublation" in English, describing how something is negated but also elevated to a higher level, preserving its essence within a new synthesis. )
