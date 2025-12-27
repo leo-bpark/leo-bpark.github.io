@@ -26,3 +26,4 @@ description: ''
 | 이하연 | NYU | 
 | 김동균 | NYU, KAIST
 | 김진우 | NYU, KAIST
+| 박진영 | [SKK](https://nosyu.kr/), 오혜연 교수님 연구실 출신 04 학번 | 
