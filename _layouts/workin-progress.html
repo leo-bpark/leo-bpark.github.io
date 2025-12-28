@@ -506,34 +506,34 @@
     {% include scripts/analytics.html %}
 
     <script>
-      // Extract JSON from page content
-      function extractJSONFromContent() {
-        // Try to find JSON in code blocks - search in hidden parser div first, then whole document
-        const parserDiv = document.getElementById('content-parser');
-        const searchScope = parserDiv || document;
-        const codeBlocks = searchScope.querySelectorAll('pre code, code.language-json');
+      // Load JSON files from _b/working/ directory
+      async function loadProjectsFromDirectory() {
+        // List of JSON files in _b/working/ directory
+        // These will be accessible at /b/working/ after Jekyll build
+        const jsonFiles = [
+          'knowledge_conflict_knowing_llm.json'
+          // Add more JSON files here as needed
+        ];
         
-        for (let codeBlock of codeBlocks) {
+        const baseUrl = '{{ site.baseurl }}/b/working/';
+        const projects = [];
+        
+        // Load all JSON files
+        for (const file of jsonFiles) {
           try {
-            const jsonText = codeBlock.textContent.trim();
-            // Check if it looks like JSON
-            if ((jsonText.startsWith('{') && jsonText.endsWith('}')) || 
-                (jsonText.startsWith('[') && jsonText.endsWith(']'))) {
-              const parsed = JSON.parse(jsonText);
-              // Hide the original code block after extracting (if visible)
-              const pre = codeBlock.closest('pre');
-            if (pre && pre.offsetParent !== null) {
-              pre.style.display = 'none';
+            const response = await fetch(baseUrl + file);
+            if (response.ok) {
+              const project = await response.json();
+              projects.push(project);
+            } else {
+              console.warn(`Failed to load ${file}: ${response.status}`);
             }
-              return parsed;
-            }
-          } catch (e) {
-            // Not valid JSON, continue searching
-            continue;
+          } catch (error) {
+            console.error(`Error loading ${file}:`, error);
           }
         }
         
-        return null;
+        return { projects: projects };
       }
 
       // Store projects data globally
@@ -778,14 +778,15 @@
           card.appendChild(section);
         }
 
-        // Main Contribution (4th)
-        if (project['main-contribution']) {
+        // Main Contribution (4th) - support both singular and plural
+        const mainContribution = project['main-contribution'] || project['main-contributions'];
+        if (mainContribution) {
           const section = document.createElement('div');
           section.className = 'project-section';
           
           const sectionTitle = document.createElement('div');
           sectionTitle.className = 'project-section-title';
-          sectionTitle.textContent = capitalizeFirst('Main Contribution');
+          sectionTitle.textContent = capitalizeFirst('Main Contribution' + (Array.isArray(mainContribution) && mainContribution.length > 1 ? 's' : ''));
           sectionTitle.style.color = highlightColor;
           section.appendChild(sectionTitle);
 
@@ -793,10 +794,10 @@
           sectionContent.className = 'project-section-content';
           
           // Check if it's an array
-          if (Array.isArray(project['main-contribution'])) {
+          if (Array.isArray(mainContribution)) {
             const list = document.createElement('ul');
             list.className = 'contribution-list';
-            project['main-contribution'].forEach(item => {
+            mainContribution.forEach(item => {
               const listItem = document.createElement('li');
               // Support markdown-style bold (**text**)
               let htmlContent = item.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
@@ -806,7 +807,7 @@
             sectionContent.appendChild(list);
           } else {
             // If it's a string, display as text
-            let htmlContent = project['main-contribution'].replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+            let htmlContent = mainContribution.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
             sectionContent.innerHTML = htmlContent;
           }
           
@@ -820,9 +821,35 @@
           card.appendChild(section);
         }
 
-        // Memo (6th) - if exists
-        if (project.memo) {
-          const section = createSection('Memo', project.memo, highlightColor);
+        // Memo/Memos (6th) - if exists, support both singular and plural
+        const memos = project.memos || (project.memo ? [project.memo] : null);
+        if (memos) {
+          const section = document.createElement('div');
+          section.className = 'project-section';
+          
+          const sectionTitle = document.createElement('div');
+          sectionTitle.className = 'project-section-title';
+          sectionTitle.textContent = capitalizeFirst(Array.isArray(memos) && memos.length > 1 ? 'Memos' : 'Memo');
+          sectionTitle.style.color = highlightColor;
+          section.appendChild(sectionTitle);
+
+          const sectionContent = document.createElement('div');
+          sectionContent.className = 'project-section-content';
+          
+          if (Array.isArray(memos)) {
+            const list = document.createElement('ul');
+            list.className = 'contribution-list';
+            memos.forEach(memo => {
+              const listItem = document.createElement('li');
+              listItem.textContent = memo;
+              list.appendChild(listItem);
+            });
+            sectionContent.appendChild(list);
+          } else {
+            sectionContent.textContent = memos;
+          }
+          
+          section.appendChild(sectionContent);
           card.appendChild(section);
         }
 
@@ -843,6 +870,8 @@
           project['highly-related-work'].forEach(work => {
             const item = document.createElement('li');
             item.className = 'related-work-item';
+            
+            // Title with link
             const link = document.createElement('a');
             link.href = work.url || '#';
             link.textContent = work.title || 'Untitled';
@@ -851,6 +880,47 @@
               link.style.color = '#000000';
             }
             item.appendChild(link);
+            
+            // Authors and year
+            const meta = [];
+            if (work.authors && Array.isArray(work.authors) && work.authors.length > 0) {
+              meta.push(work.authors.join(', '));
+            }
+            if (work.year) {
+              meta.push(work.year);
+            }
+            if (meta.length > 0) {
+              const metaSpan = document.createElement('span');
+              metaSpan.style.display = 'block';
+              metaSpan.style.fontSize = '0.9rem';
+              metaSpan.style.color = '#666';
+              metaSpan.style.marginTop = '0.25rem';
+              metaSpan.textContent = meta.join(' • ');
+              item.appendChild(metaSpan);
+            }
+            
+            // Memo or memos
+            const workMemos = work.memos || (work.memo ? [work.memo] : null);
+            if (workMemos) {
+              const memoDiv = document.createElement('div');
+              memoDiv.style.marginTop = '0.5rem';
+              memoDiv.style.fontSize = '0.9rem';
+              memoDiv.style.color = '#444';
+              memoDiv.style.lineHeight = '1.6';
+              
+              if (Array.isArray(workMemos)) {
+                workMemos.forEach((memo, idx) => {
+                  if (idx > 0) {
+                    memoDiv.appendChild(document.createElement('br'));
+                  }
+                  memoDiv.appendChild(document.createTextNode(memo));
+                });
+              } else {
+                memoDiv.textContent = workMemos;
+              }
+              item.appendChild(memoDiv);
+            }
+            
             workList.appendChild(item);
           });
 
@@ -898,14 +968,20 @@
       }
 
       // Initialize on page load
-      document.addEventListener('DOMContentLoaded', function() {
-        const jsonData = extractJSONFromContent();
-        if (jsonData) {
-          renderProjects(jsonData);
-        } else {
-          console.error('Could not extract JSON data from page content');
+      document.addEventListener('DOMContentLoaded', async function() {
+        try {
+          const jsonData = await loadProjectsFromDirectory();
+          if (jsonData && jsonData.projects && jsonData.projects.length > 0) {
+            renderProjects(jsonData);
+          } else {
+            console.error('No project data found');
+            document.getElementById('project-detail-container').innerHTML = 
+              '<p style="text-align: center; color: #999; padding: 2rem;">프로젝트 데이터를 찾을 수 없습니다.</p>';
+          }
+        } catch (error) {
+          console.error('Error loading projects:', error);
           document.getElementById('project-detail-container').innerHTML = 
-            '<p style="text-align: center; color: #999; padding: 2rem;">프로젝트 데이터를 찾을 수 없습니다.</p>';
+            '<p style="text-align: center; color: #999; padding: 2rem;">프로젝트 데이터를 불러오는 중 오류가 발생했습니다.</p>';
         }
       });
     </script>
