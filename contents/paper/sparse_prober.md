@@ -48,6 +48,8 @@ _styles: >
     }
 ---
 
+Causal Sparse Prober: Understanding Linear Probing in Transformers
+
 
 - 본 논문은 Transformer MLP에 대한 **linear probing의 학습 원리와 작동 메커니즘**을 이해하기 위해,  
   MLP output 공간에서의 concept direction 탐지와 MLP hidden 뉴런 공간에서의 probing 사이의 연결고리를 이론적으로 정립한다.  
