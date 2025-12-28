@@ -138,9 +138,9 @@ collections:
   essay:
     output: true
     permalink: /essay/:path/
-  box:
+  b:
     output: true
-    permalink: /box/:path/
+    permalink: /b/:path/
   mirror:
     output: true
     permalink: /mirror/:path/

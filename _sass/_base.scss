@@ -185,7 +185,6 @@ hr {
 table {
   width: 100%;
   border-collapse: collapse;
-  background-color: #fff;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   margin-bottom: 20px;
 }
@@ -196,11 +195,11 @@ th, td {
   font-size: var(--global-text-size);
 }
 th {
-  background-color: #ffffff;
   font-weight: bold;
+  background: rgba(226, 141, 23, 0.136);
 }
 tr:hover {
-  background-color: #f1f1f1;
+  background: rgba(226, 141, 23, 0.136);
 }
 
 table td {

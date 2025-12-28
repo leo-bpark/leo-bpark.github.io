@@ -1,11 +1,11 @@
 ---
 layout: default
 title: AI Research
-permalink: /box/
+permalink: /b/
 description: 
 ---
 
-<div class="research-container">
+<!-- <div class="research-container">
   <div class="header-section">
     <h1 class="sub-title">Box</h1>
     <div class="subtitle-line"></div>
@@ -31,7 +31,7 @@ description:
       {%- endfor -%}
     </div>
   </div>
-</div>
+</div> -->
 
 <style>
 body {
