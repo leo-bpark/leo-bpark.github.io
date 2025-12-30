@@ -3,7 +3,7 @@ layout: distill-reading
 bibliography: all.bib
 giscus_comments: false
 disqus_comments: false
-date: 2025-12-28
+date: 2025-12-30
 featured: true
 img: assets/img/feigenbaum.png
 title: 'Incomplete Prompt Jailbreak'
@@ -48,8 +48,11 @@ _styles: >
     }
 ---
 
-- **Incomplete prompt jailbreak는 complete한 상태로 가기 전까지 jailbreak이 나타난다는 개념이다.** 
-- **[Neurath's boat] We are like sailors who on the open sea must reconstruct their ship** 
-- **여러 정류의 Floating Attractor의 타입에 대해서, 과연 얼마나 오래 지속되는가?** 
-- **Floating Attractor에 대해서, 거절 학습 후 모델은 빠르게 정박하는가?** 
-- **물이 센다면, 배를 정박할 것인가? 아니면 배를 고치면서 항해를 계속할 것인가?** 
+
+> **[Neurath's boat]**   
+>  We are like sailors who on the open sea must reconstruct their ship
+
+- Incomplete prompt jailbreak는 complete한 상태로 가기 전까지 jailbreak이 나타난다
+- 물이 센다면, 배를 정박할 것인가? 아니면 배를 고치면서 항해를 계속할 것인가?
+- 여러 정류의 Floating Attractor의 타입에 대해서, 과연 얼마나 누수는 오래 지속되는가?
+- Floating Attractor에 대해서, 거절 학습 후 모델은 빠르게 정박하는가?
