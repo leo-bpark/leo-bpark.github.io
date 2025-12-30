@@ -54,6 +54,7 @@ _styles: >
 - **Proposition Interpretation Confclit** 
 - **Rule Interpretation Confclit** 
 
+
 ## General Conflict
 
 충돌(conflict)이란 두 개 이상의 믿음이 동시에 유지될 때, 그들 사이에 **불일치**가 발생하는 상황을 의미한다.  
@@ -196,7 +197,59 @@ $Q \Rightarrow \neg P$
 **두 번째 instruction이 첫 번째 instruction의 부정을 유도하기에 충분한지**,  
 즉 명제 수준에서 $\neg$ 관계가 성립하는지를 반드시 확인해야 한다.
 
-## Rule Interpretation Conflict 
+
+## Rule Interpretation Conflict
+
+논리적 추론에서 규칙(rule)에 의해 새로운 믿음(belief)을 획득할 때, 서로 다른 규칙 적용 결과가 충돌하는 상황이 발생할 수 있다. 예를 들어 다음과 같은 두 규칙을 생각하자.
+
+$$
+\mathcal{D} \rightarrow \mathcal{B}, \quad \mathcal{E} \rightarrow \neg \mathcal{B}
+$$
+
+서로 다른 트리거 $\mathcal{D}$와 $\mathcal{E}$가 각각 활성화될 경우, 도출되는 결론 $\mathcal{B}$와 $\neg \mathcal{B}$는 상호 충돌한다.  
+이때 이러한 충돌은 단순한 명제 수준의 충돌을 넘어, **규칙의 활성화 자체가 만들어내는 충돌**로 이해할 수 있다. 즉, 규칙 활성화에 의한 충돌은 $\mathtt{t} \rightarrow \mathcal{B}$ 형태의 명제 충돌을 포함하는 보다 상위 개념이다.
+
+조건에 의해 발생하는 이러한 충돌을 해소하기 위해서는, 규칙의 적용을 **철회(retraction)** 할 수 있어야 한다.  
+규칙을 철회한다는 것은 규칙의 적용 사실 또는 그 결과를 더 이상 수용하지 않겠다는 의미이며, 이에 대해 다음과 같은 세 가지 해석이 가능하다.
+
+1. **소극적 철회 (Rollback)**  
+   규칙을 철회하면서 믿음을 적용 이전 상태 $\mathcal{B}_0$로 되돌린다. 이는 해당 규칙의 적용 자체가 부적절했음을 가정하고, 이전 상태로 복구하는 방식이다.  
+   그러나 규칙 적용 이후 다른 규칙이나 시간적 요인에 의해 믿음이 추가로 변경되었다면, 단순 복구는 올바른 해결책이 아닐 수 있다.
+
+2. **적극적 철회 (Negation Acceptance)**  
+   규칙을 철회하면서 결론 믿음에 대한 부정, 즉 $\neg \mathcal{B}$를 수용한다. 이는 기존 믿음을 명시적으로 부정하는 방식으로, 보다 공격적이고 강한 형태의 철회라 볼 수 있다.
+
+3. **대범적 철회 (Result Preservation)**  
+   규칙의 적용 사실만 제거하고, 결론 믿음 $\mathcal{B}$ 자체는 유지한다. 이는 규칙이 결론을 *설명*하는 역할만 했을 뿐, 결론의 정당성 자체에는 관여하지 않는다는 해석이다.  
+   실세계에서 사후적으로 근거를 정리하는 설명 방식과 유사하며, 이 경우 규칙은 계산 결과의 논리적 설명을 위해 존재하게 된다.
+
+
+규칙 간 충돌은 결국 **결론에 도달하는 경로들 간의 충돌**이다. 규칙들이 서로 독립적으로 작성되고 명시적 제약이 없을 경우, 다음과 같은 구조적 문제가 발생할 수 있다.
+
+- $\mathcal{A} \rightarrow \mathcal{D}, \; \mathcal{D} \rightarrow \mathcal{B}$
+- $\mathcal{A} \rightarrow \mathcal{E}, \; \mathcal{E} \rightarrow \neg \mathcal{B}$
+
+이는 동일한 조건 $\mathcal{A}$로부터 $\mathcal{B}$와 $\neg \mathcal{B}$가 동시에 도출되는 상황이다. 이를 지식베이스 형태로 나열하면 다음과 같다.
+
+$\mathbf{KB}$:
+- $\mathcal{A} \rightarrow \mathcal{D}$
+- $\mathcal{D} \rightarrow \mathcal{B}$
+- $\mathcal{A} \rightarrow \mathcal{E}$
+- $\mathcal{E} \rightarrow \neg \mathcal{B}$
+
+논리적 추론이 가능한 시스템이라면, 이러한 구조에서 **결론 수준의 충돌이 발생했음을 인지**할 수 있어야 한다.
+
+이와 같은 논리적 모순은 여러 이유로 발생한다. 대표적으로 다음과 같다.
+
+1. **Normality 기반 규칙 작성**  
+   일반적인 상황을 가정해 규칙을 작성했으나, 예외적 상황을 별도의 규칙으로 추가하면서 충돌이 발생하는 경우.
+
+2. **부정(negation)의 정의 불충분성**  
+   예를 들어 “농구를 한다”를 “축구를 한다”의 부정으로 볼 수 있는지와 같은 문제는 부정의 의미를 명확히 정의하지 않으면 충돌을 야기한다.
+
+이러한 충돌은 자연스러운 현상일 수 있다. 만약 세계의 상태가 유일하게 결정되어야 한다면, 즉 모든 명제의 진리값을 하나로 결정해야 하는 **고전적 2값 논리**를 따른다면, 충돌은 반드시 해소되어야 한다. 
+반면, Kleene 논리나 Belnap 논리처럼 명제에 대해 다중 진리값을 허용하는 경우에는, **충돌 상태 자체가 자연스러운 중간 상태**로 받아들여질 수 있다. 물론 이 경우에도 최종적인 진리값을 결정하는 문제는 여전히 어려운 과제로 남는다.
+
 
 
 --- 
