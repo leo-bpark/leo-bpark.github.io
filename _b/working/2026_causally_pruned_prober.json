@@ -1,15 +1,14 @@
 {
-    "title": "Knowledge Conflict in LLMs",
-    "research-question": "아직 광범위 하기에 정확한 연구 질문을 찾지 못하였음. ",
+    "title": "Causally Pruned Prober",
+    "research-question": "Transformer MLP에서 선형 Linear Probing에 대한 해석은 어떻게 개선될 수 있는가?",
     "memos":[
-        "기존의 언어모델은 ",
-        "기존의 언어모델은 "
+        "Causality condition is a key condition for concept neuron detection."
     ],
     "main-contributions": [
-        "Novel approach to understanding prompt injection vulnerabilities",
-        "Novel approach to understanding prompt injection vulnerabilities"
+        "Novel approach to concept neuron detection",
+        "Novel approach to concept neuron detection"
     ],
-    "impact": "High - addresses critical security concerns in LLM deployment",
+    "impact": "High - addresses critical security concerns in concept neuron detection",
     "highly-related-work": [
         {
             "type": "paper",
@@ -29,6 +28,11 @@
             "type": "github",
             "label": "GitHub Repository",
             "url": "https://github.com/yourusername/project"
+        },
+        {
+            "type": "Leo-Memo",
+            "label": "Leo-Memo",
+            "url": "/contents/paper/causally_pruned_prober"
         },
         {
             "type": "overleaf",

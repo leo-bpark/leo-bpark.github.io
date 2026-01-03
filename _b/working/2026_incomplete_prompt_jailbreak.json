@@ -1,0 +1,42 @@
+{
+    "title": "Incomplete Prompt Jailbreak",
+    "research-question": "Are Open-Weight LLMs robust to completion dilemma? (Neurath’s boat)",
+    "main-contributions": [
+        "IPJ 현상에 대한 정의와 오픈 모델 LLM의 취약성에 대한 실험적 연구",
+        "파라미터 튜닝 등 일반적인 형태의 모델 경향성 변경시, OOD에 대한 취약성 증가 현상 관찰",
+        "생성물에 대한 빠른 중단 / 중단을 금지하는 뉴런 발견을 통한, LLM 생성 세부 조절 가능성 제시"
+    ],
+    "impact": "오픈 모델들의 본질적인 취약성과 언어적 딜레마 상황을 통하여, 오픈 모델이 지니는 불안정성을 보여줌.",
+    "highly-related-work": [
+        {
+            "type": "paper",
+            "title": "Refuse Whenever You Feel Unsafe: Improving Safety in LLMs via Decoupled Refusal Training",
+            "memos": [
+                "모델이 응답의 어떤 위치에서도 unsafe content 대신 거절(refusal) 토큰을 선택할 수 있도록 training 함",
+                "거절을 디코딩 초기 위치에 한정하는 대신, 모델은 강화된 전이 최적화(Reinforced Transition Optimization)를 통해 어떤 중간의 유해한 응답 접두 상태에서도 거절이 일관되게 최적의 선택이 되도록 학습된다."
+            ],
+            "authors": ["Youliang Yuan"],
+            "year": "ACL 2025",
+            "url": "https://aclanthology.org/2025.acl-long.158.pdf"
+        }
+    ],
+    "tags": ["jailbreak", "llm", "Yeonjea Kim"],
+    "links": [
+        {
+            "type": "overleaf (ACL 2026)",
+            "label": "Overleaf Document",
+            "url": "https://www.overleaf.com/project/6950bfa72c6528541a665d29"
+        },
+        {
+            "type": "Leo-Memo",
+            "label": "Leo-Memo",
+            "url": "/contents/paper/incomplete_prompt_jailbreak"
+        }
+
+    ],
+    "status": "in-progress",
+    "start-date": "2025-01-02",
+    "last-updated": "2026-01-02",
+    "highlight-color": "#aa0000",
+    "progress": 75
+}
